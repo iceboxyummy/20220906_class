@@ -2,6 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="01_helloworld.cpp" />
-    <ClCompile Include="02_data type.cpp" />
+    <ClCompile Include="..\..\..\OneDrive\바탕 화면\02_data type.cpp" />
   </ItemGroup>
 </Project>
