@@ -2,6 +2,8 @@
 
 #include<stdio.h>
 #include<conio.h> // 콘솔용 입출력함수 라이브러리, _getch()
+#include<stdlib.h> // 난수
+#include<time.h> // 시간 관련
 
 int main() {
 	/*
@@ -89,5 +91,40 @@ int main() {
 		try_count++;
 	} while (secret_code != password);
 
+	srand(time(NULL));
+	int key2 = rand() % 100 + 1;
+	int answer = 0;
+
+	int low = 1;
+	int high = 100;
+
+	printf("****UP&DOWN****\n");
+	while(1){
+
+		printf("현재 범위 : %d ~ %d \n", low, high);
+		printf("입력 => ");
+		scanf_s("%d", &answer);
+
+		if (key2 == answer)
+		{
+			printf("정답입니다~~\n\n");
+			break;
+		}
+		else if (low < answer && answer < high)
+		{
+			if (answer < key2)
+			{
+				printf("UP!\n");
+				low = answer + 1;
+			}
+			else
+			{
+				printf("DOWN!\n");
+				high = answer - 1;
+			}
+		}
+		else
+			printf("범위를 벗어난 입력입니다\n");
+	}
 	return 0;
 }
