@@ -2,47 +2,47 @@
 
 /* 
 
-  º¯¼ö(varibale) 
-   - µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ±âÀ§ÇØ ÇÒ´ç¹ÞÀº ¸Þ¸ð¸®°ø°£
-   - ¸Þ¸ð¸®ÁÖ¼Ò¸¦ Á÷Á¢ ´Ù·çÁö ¾Ê°íµµ µ¥ÀÌÅÍ°¡ ÀúÀåµÇ¾îÀÖ´Â ¸Þ¸ð¸®¸¦ ¼öÇÐÀÇ º¯¼öÃ³·³ Á÷°üÀûÀ¸·Î »ç¿ëÇÒ ¼ö ÀÖ°Ô ÇØÁØ´Ù.
+  ë³€ìˆ˜(varibale) 
+   - ë°ì´í„°ë¥¼ ì €ìž¥í•˜ê¸°ìœ„í•´ í• ë‹¹ë°›ì€ ë©”ëª¨ë¦¬ê³µê°„
+   - ë©”ëª¨ë¦¬ì£¼ì†Œë¥¼ ì§ì ‘ ë‹¤ë£¨ì§€ ì•Šê³ ë„ ë°ì´í„°ê°€ ì €ìž¥ë˜ì–´ìžˆëŠ” ë©”ëª¨ë¦¬ë¥¼ ìˆ˜í•™ì˜ ë³€ìˆ˜ì²˜ëŸ¼ ì§ê´€ì ìœ¼ë¡œ ì‚¬ìš©í•  ìˆ˜ ìžˆê²Œ í•´ì¤€ë‹¤.
 
-  ÀÚ·áÇü(data type)
-   - º¯¼öÀÇ Á¾·ù
-   - ÀúÀåµÇ´Â °ªÀÇ Á¾·ù¿Í ¹üÀ§¿¡ µû¶ó ´Ù¸£°Ô Ç¥Çö
+  ìžë£Œí˜•(data type)
+   - ë³€ìˆ˜ì˜ ì¢…ë¥˜
+   - ì €ìž¥ë˜ëŠ” ê°’ì˜ ì¢…ë¥˜ì™€ ë²”ìœ„ì— ë”°ë¼ ë‹¤ë¥´ê²Œ í‘œí˜„
 
-  bit¿Í byte
-    bit : °¡Àå ÀÛÀº µ¥¾îÅÍ ´ÜÀ§, 0°ú 1¸¸À» Ç¥ÇöÇÒ ¼ö ÀÖ´Â 2Áø¼ö·Î Ç¥Çö
-	byte : 8bit == 1byte, µ¥¾îÄ¿ Å©±âÀÇ ´ÜÀ§
+  bitì™€ byte
+    bit : ê°€ìž¥ ìž‘ì€ ë°ì–´í„° ë‹¨ìœ„, 0ê³¼ 1ë§Œì„ í‘œí˜„í•  ìˆ˜ ìžˆëŠ” 2ì§„ìˆ˜ë¡œ í‘œí˜„
+	byte : 8bit == 1byte, ë°ì–´ì»¤ í¬ê¸°ì˜ ë‹¨ìœ„
 
-  ÀÚ·áÇüÀÇ Á¾·ù
+  ìžë£Œí˜•ì˜ ì¢…ë¥˜
   
-  ºÎÈ£°¡ ÀÖ´Â Á¤¼öÇü
-  À½¼öÀÎ °æ¿ì ¸Ç ¾Õ ºñÆ®°¡ 1 ¾ç¼öÀÇ °æ¿ì 0
+  ë¶€í˜¸ê°€ ìžˆëŠ” ì •ìˆ˜í˜•
+  ìŒìˆ˜ì¸ ê²½ìš° ë§¨ ì•ž ë¹„íŠ¸ê°€ 1 ì–‘ìˆ˜ì˜ ê²½ìš° 0
   
-  ºÎÈ£¾ø´Â Á¤¼öÇü
-  À½¼ö°¡ ¾ø´Â ´ë½Å ¾ç¼ö°¡ 2¹è·Î ´Ã¾î³²
-  ºÎÈ£ÀÖ´Â Á¤¼öÇü ¾Õ¿¡ unsigned Å°¿öµå¸¦ ºÙÀÌ¸é µÊ
-  Å©±â´Â ºÎÈ£ÀÖ´Â Á¤¼öÇü°ú °°´Ù
+  ë¶€í˜¸ì—†ëŠ” ì •ìˆ˜í˜•
+  ìŒìˆ˜ê°€ ì—†ëŠ” ëŒ€ì‹  ì–‘ìˆ˜ê°€ 2ë°°ë¡œ ëŠ˜ì–´ë‚¨
+  ë¶€í˜¸ìžˆëŠ” ì •ìˆ˜í˜• ì•žì— unsigned í‚¤ì›Œë“œë¥¼ ë¶™ì´ë©´ ë¨
+  í¬ê¸°ëŠ” ë¶€í˜¸ìžˆëŠ” ì •ìˆ˜í˜•ê³¼ ê°™ë‹¤
 
-  Å°¿öµå : ÇÁ·Î±×·¡¹Ö ¾ð¾î¿¡¼­ ÀÌ¹Ì ¹®¹ýÀûÀ¸·Î »ç¿ëÇÏ°íÀÖ¾î ½Äº°ÀÚ·Î »ç¿ëÇÒ¼ö ¾ø´Â ´Ü¾î 
+  í‚¤ì›Œë“œ : í”„ë¡œê·¸ëž˜ë° ì–¸ì–´ì—ì„œ ì´ë¯¸ ë¬¸ë²•ì ìœ¼ë¡œ ì‚¬ìš©í•˜ê³ ìžˆì–´ ì‹ë³„ìžë¡œ ì‚¬ìš©í• ìˆ˜ ì—†ëŠ” ë‹¨ì–´ 
   
 */
-char c = 'c'; // 1byte, ÁÖ·Î ¹®ÀÚ¸¦ ÀúÀåÇÒ¶§ »ç¿ë, ¹üÀ§(-128 ~ 127)
-short s = 1; // 2byte, Á¤¼ö¸¦ ÀúÀåÇÑ´Ù. ¹üÀ§(-32768 ~ 32767)
-int i = 1; // 4byte, Á¤¼ö¸¦ ÀúÀåÇÑ´Ù. ¹üÀ§(-21¾ï ~ 21¾ï)
+char c = 'c'; // 1byte, ì£¼ë¡œ ë¬¸ìžë¥¼ ì €ìž¥í• ë•Œ ì‚¬ìš©, ë²”ìœ„(-128 ~ 127)
+short s = 1; // 2byte, ì •ìˆ˜ë¥¼ ì €ìž¥í•œë‹¤. ë²”ìœ„(-32768 ~ 32767)
+int i = 1; // 4byte, ì •ìˆ˜ë¥¼ ì €ìž¥í•œë‹¤. ë²”ìœ„(-21ì–µ ~ 21ì–µ)
 
-unsigned char c2= 'c'; // 1byte, ÁÖ·Î ¹®ÀÚ¸¦ ÀúÀåÇÒ¶§ »ç¿ë, ¹üÀ§(0 ~ 255)
-unsigned short s2 = 1; // 2byte, Á¤¼ö¸¦ ÀúÀåÇÑ´Ù. ¹üÀ§(0 ~ 65535)
-unsigned int i2 = 1; // 4byte, Á¤¼ö¸¦ ÀúÀåÇÑ´Ù. ¹üÀ§(0 ~ 42¾ï)
+unsigned char c2= 'c'; // 1byte, ì£¼ë¡œ ë¬¸ìžë¥¼ ì €ìž¥í• ë•Œ ì‚¬ìš©, ë²”ìœ„(0 ~ 255)
+unsigned short s2 = 1; // 2byte, ì •ìˆ˜ë¥¼ ì €ìž¥í•œë‹¤. ë²”ìœ„(0 ~ 65535)
+unsigned int i2 = 1; // 4byte, ì •ìˆ˜ë¥¼ ì €ìž¥í•œë‹¤. ë²”ìœ„(0 ~ 42ì–µ)
 
 /*
  
-  2ÀÇ º¸¼ö¹ý : À½¼ö¸¦ Ç¥ÇöÇÒ ‹š¿¡´Â ¾ç¼öÀÇ ºñÆ®¸¦ µÚÁý°í +1À» ÇØÁÖ¾î Ç¥Çö
+  2ì˜ ë³´ìˆ˜ë²• : ìŒìˆ˜ë¥¼ í‘œí˜„í•  Â‹Âšì—ëŠ” ì–‘ìˆ˜ì˜ ë¹„íŠ¸ë¥¼ ë’¤ì§‘ê³  +1ì„ í•´ì£¼ì–´ í‘œí˜„
 
-   ex) -24Ç¥ÇöÇÏ±â
-    0001 1000 => 24¾ç¼öÀÇ ºñÆ®Ç¥Çö
-    1110 0111 => ºñÆ®¸¦ µÚÁý¾îÁØ´Ù.
-    1110 1000 => µÚÁý¾îÁø ºñÆ®¿¡ +1À» ÇØÁØ´Ù.
+   ex) -24í‘œí˜„í•˜ê¸°
+    0001 1000 => 24ì–‘ìˆ˜ì˜ ë¹„íŠ¸í‘œí˜„
+    1110 0111 => ë¹„íŠ¸ë¥¼ ë’¤ì§‘ì–´ì¤€ë‹¤.
+    1110 1000 => ë’¤ì§‘ì–´ì§„ ë¹„íŠ¸ì— +1ì„ í•´ì¤€ë‹¤.
 
 */
 
@@ -50,37 +50,37 @@ unsigned int i2 = 1; // 4byte, Á¤¼ö¸¦ ÀúÀåÇÑ´Ù. ¹üÀ§(0 ~ 42¾ï)
 
 int main(void)
 {
-	// º¯¼ö ¼±¾ð¹æ¹ý : datatype name;
+	// ë³€ìˆ˜ ì„ ì–¸ë°©ë²• : datatype name;
 
-	int a; //declaration (¼±¾ðÇÏ´Ù)
-	a = 10; //initialize (ÃÊ±âÈ­) : º¯¼ö¸¦ ¼±¾ðÇÏ°í ÃÖÃÊ·Î °ªÀ» ÀúÀåÇÏ´Â °Í
+	int a; //declaration (ì„ ì–¸í•˜ë‹¤)
+	a = 10; //initialize (ì´ˆê¸°í™”) : ë³€ìˆ˜ë¥¼ ì„ ì–¸í•˜ê³  ìµœì´ˆë¡œ ê°’ì„ ì €ìž¥í•˜ëŠ” ê²ƒ
 
-	int b = 10; //¼±¾ð°ú µ¿½Ã¿¡ ÃÊ±âÈ­
-	b = 20; //´ëÀÔ, ÇÒ´ç
+	int b = 10; //ì„ ì–¸ê³¼ ë™ì‹œì— ì´ˆê¸°í™”
+	b = 20; //ëŒ€ìž…, í• ë‹¹
 
-    // = : ´ëÀÔ¿¬»êÀÚ, ¿À¸¥ÂÊ ÇÇ¿¬»êÀÚ¸¦ ¿ÞÂÊÀÇ ÇÇ¿¬»êÀÚ¿¡ ´ëÀÔ
+    // = : ëŒ€ìž…ì—°ì‚°ìž, ì˜¤ë¥¸ìª½ í”¼ì—°ì‚°ìžë¥¼ ì™¼ìª½ì˜ í”¼ì—°ì‚°ìžì— ëŒ€ìž…
 
 /* 
-   º¯¼öÀÇ ÀÌ¸§À» ÁöÀ» ‹š ÁÖÀÇÁ¡
+   ë³€ìˆ˜ì˜ ì´ë¦„ì„ ì§€ì„ Â‹Âš ì£¼ì˜ì 
 
-	 int 1a; ¸Ç ¾Õ¿¡ ¼ýÀÚ°¡ ÀÖÀ¸¸é ¾ÈµÊ
+	 int 1a; ë§¨ ì•žì— ìˆ«ìžê°€ ìžˆìœ¼ë©´ ì•ˆë¨
      int a1;
 	 
-	 int hello world; ¶ç¾î¾²±â ¾ÈµÊ
+	 int hello world; ë„ì–´ì“°ê¸° ì•ˆë¨
 	 int hello_world;
 
-	 int int;  Å°¿öµå¸¦ »ç¿ëÇÏ¸é ¾ÈµÊ
+	 int int;  í‚¤ì›Œë“œë¥¼ ì‚¬ìš©í•˜ë©´ ì•ˆë¨
 	 int int_;
 
 	 int hp;
-	 int hp; °°Àº ÀÌ¸§ÀÇ º¯¼ö¸¦ ¼±¾ðÇÏ¸é ¾ÈµÊ
+	 int hp; ê°™ì€ ì´ë¦„ì˜ ë³€ìˆ˜ë¥¼ ì„ ì–¸í•˜ë©´ ì•ˆë¨
 */
 
-  //º¯¼ö Ç¥±â¹ý
-	//Çü°¡¸®¾È Ç¥±â¹ý - °¡µ¶¼ºÀÌ ¶³¾îÁ®¼­ Àß ¾²Áö ¾Ê´Â´Ù.
+  //ë³€ìˆ˜ í‘œê¸°ë²•
+	//í˜•ê°€ë¦¬ì•ˆ í‘œê¸°ë²• - ê°€ë…ì„±ì´ ë–¨ì–´ì ¸ì„œ ìž˜ ì“°ì§€ ì•ŠëŠ”ë‹¤.
 	int i_age;
 	int intweight;
- //¹®ÀÚÇü
+ //ë¬¸ìží˜•
 	char c1 = 'A';
 	char c2 = 65;
 	
@@ -89,10 +89,10 @@ int main(void)
 	printf("character size: %d\n", sizeof(char));
 	printf("character size: %d\n\n", sizeof(c1));
 
-	//µÑ´Ù °°Àº ¹®ÀÚ·Î Ãâ·ÂÀÌ µÈ´Ù.
-	//->char´Â °ªÀ» ¼ýÀÚ·Î °¡Áö°í ÀÖÁö¸¸ ASCI ÄÚµå¸¦ »ç¿ëÇØ ¹®ÀÚ·Î Ãâ·ÂÇÑ´Ù.
+	//ë‘˜ë‹¤ ê°™ì€ ë¬¸ìžë¡œ ì¶œë ¥ì´ ëœë‹¤.
+	//->charëŠ” ê°’ì„ ìˆ«ìžë¡œ ê°€ì§€ê³  ìžˆì§€ë§Œ ASCI ì½”ë“œë¥¼ ì‚¬ìš©í•´ ë¬¸ìžë¡œ ì¶œë ¥í•œë‹¤.
 
-	//Á¤¼öÇü
+	//ì •ìˆ˜í˜•
 	
 	int num = 0;
 	printf("num : %d \n ", num);
@@ -104,53 +104,53 @@ int main(void)
 	num = 10;
 	printf("num : %d \n\n ", num);
 
-	//½Ç¼öÇü
-	float f = 0.123f; //4byte, µÚ¿¡ f¸¦ ºÙ¿©Áà¾ßÇÔ.
-	double d = 1.1234; //8byte, ½Ç¼öÀÇ ±âº» Å¸ÀÔÀÌ¶ó ºÙÀÌÁö ¾Ê´Â´Ù.
+	//ì‹¤ìˆ˜í˜•
+	float f = 0.123f; //4byte, ë’¤ì— fë¥¼ ë¶™ì—¬ì¤˜ì•¼í•¨.
+	double d = 1.1234; //8byte, ì‹¤ìˆ˜ì˜ ê¸°ë³¸ íƒ€ìž…ì´ë¼ ë¶™ì´ì§€ ì•ŠëŠ”ë‹¤.
 
 	/*
-	°íÁ¤ ¼Ò¼öÁ¡ ¹æ½Ä  : ¼Ò¼öÁ¡ÀÇ À§Ä¡°¡ °íÁ¤µÇ³Ê Ç¥½ÃµÇ´Â ¹æ½Ä ex) 0.123
-	¹üÀ§°¡ ÇÑÁ¤ÀûÀÌ¾î¼­ Á¼Àº ¹üÀ§¹Û¿¡ Ç¥ÇöÀ» ¸øÇÔ
+	ê³ ì • ì†Œìˆ˜ì  ë°©ì‹  : ì†Œìˆ˜ì ì˜ ìœ„ì¹˜ê°€ ê³ ì •ë˜ë„ˆ í‘œì‹œë˜ëŠ” ë°©ì‹ ex) 0.123
+	ë²”ìœ„ê°€ í•œì •ì ì´ì–´ì„œ ì¢ì€ ë²”ìœ„ë°–ì— í‘œí˜„ì„ ëª»í•¨
 	*/
 
 	/*
-	ºÎµ¿ ¼Ò¼öÁ¡ ¹æ½Ä : ¼Ò¼öÁ¡ÀÇ À§Ä¡°¡ ¹Ù²ï´Ù´Â ¶æ ex) 0.123e0
-	½Ç¼ö ÀÚ·áÇüÀ» ÀúÀåÇÒ‹š »ç¿ëÇÏ´Â ¹æ½Ä
-	ÀûÀº ºñÆ®·Î ³ÐÀº ¹üÀ§¸¦ Ç¥ÇöÇÒ ¼ö ÀÖÁö¸¸ ±Ù»ç°ªÀ» Ç¥ÇöÇÏ´Â°Å¶ó Á¤È®¼ºÀÌ ¶³¾îÁü
+	ë¶€ë™ ì†Œìˆ˜ì  ë°©ì‹ : ì†Œìˆ˜ì ì˜ ìœ„ì¹˜ê°€ ë°”ë€ë‹¤ëŠ” ëœ» ex) 0.123e0
+	ì‹¤ìˆ˜ ìžë£Œí˜•ì„ ì €ìž¥í• Â‹Âš ì‚¬ìš©í•˜ëŠ” ë°©ì‹
+	ì ì€ ë¹„íŠ¸ë¡œ ë„“ì€ ë²”ìœ„ë¥¼ í‘œí˜„í•  ìˆ˜ ìžˆì§€ë§Œ ê·¼ì‚¬ê°’ì„ í‘œí˜„í•˜ëŠ”ê±°ë¼ ì •í™•ì„±ì´ ë–¨ì–´ì§
 
-	ºÎµ¿ ¼Ò¼öÁ¡Àº ºÎÈ£, Áö¼ö, °¡¼ö·Î ÀÌ·ç¾îÁ®ÀÖÀ½
-	 Áö¼ö : ¼Ò¼öÁ¡ÀÇ À§Ä¡, ºñÆ®·Î Ç¥ÇöÇÒ ‹š Áö¼ö¿¡ 127À» ´õÇÑ ÈÄ Ç¥Çö
-	 °¡¼ö : À¯È¿¼ýÀÚ
+	ë¶€ë™ ì†Œìˆ˜ì ì€ ë¶€í˜¸, ì§€ìˆ˜, ê°€ìˆ˜ë¡œ ì´ë£¨ì–´ì ¸ìžˆìŒ
+	 ì§€ìˆ˜ : ì†Œìˆ˜ì ì˜ ìœ„ì¹˜, ë¹„íŠ¸ë¡œ í‘œí˜„í•  Â‹Âš ì§€ìˆ˜ì— 127ì„ ë”í•œ í›„ í‘œí˜„
+	 ê°€ìˆ˜ : ìœ íš¨ìˆ«ìž
 	 
-	 float : ºÎÈ£(1bit), Áö¼ö(8bit) °¡¼ö(32bit)
-	 double  : ºÎÈ£(1bit), Áö¼ö(11bit) °¡¼ö(52bit)
+	 float : ë¶€í˜¸(1bit), ì§€ìˆ˜(8bit) ê°€ìˆ˜(32bit)
+	 double  : ë¶€í˜¸(1bit), ì§€ìˆ˜(11bit) ê°€ìˆ˜(52bit)
 	 */
 
 	 /*
-	Ç¥Çö ¹æ½Ä 0.123À» Ç¥ÇöÇÑ´Ù°í ÇÒ¶§
-	°íÁ¤ ¼Ò¼öÁ¡ == 0.123
+	í‘œí˜„ ë°©ì‹ 0.123ì„ í‘œí˜„í•œë‹¤ê³  í• ë•Œ
+	ê³ ì • ì†Œìˆ˜ì  == 0.123
 
-	ºÎµ¿¼Ò¼öÁ¡  == 1.23e-1
-	- e0, e1, e-1Àº 10ÀÇ Á¦°öÀ» ÀÇ¹Ì, ÇØ´ç °ª¸¸Å® Á¦°öÇÏ¿© ¾ÕÀÇ °ª°ú °öÇÏ¸é °íÁ¤ ¼Ò¼öÁ¡ ¹æ½ÄÀÓ
+	ë¶€ë™ì†Œìˆ˜ì   == 1.23e-1
+	- e0, e1, e-1ì€ 10ì˜ ì œê³±ì„ ì˜ë¯¸, í•´ë‹¹ ê°’ë§Œí½ ì œê³±í•˜ì—¬ ì•žì˜ ê°’ê³¼ ê³±í•˜ë©´ ê³ ì • ì†Œìˆ˜ì  ë°©ì‹ìž„
      */
 
 	float f1 = 0.123f; 
 	double d1 = 0.123;
-	printf("°íÁ¤ ¼Ò¼öÁ¡  : %f\n", f1);
-	printf("ºÎµ¿ ¼Ò¼öÁ¡  : %e\n", f1); // Áö¼ö¸¦ »ç¿ëÇÏ´Â ÇüÅÂ·Î Ãâ·Â°¡´É
-	printf("°íÁ¤ ¼Ò¼öÁ¡  : %lf\n", d1);
+	printf("ê³ ì • ì†Œìˆ˜ì   : %f\n", f1);
+	printf("ë¶€ë™ ì†Œìˆ˜ì   : %e\n", f1); // ì§€ìˆ˜ë¥¼ ì‚¬ìš©í•˜ëŠ” í˜•íƒœë¡œ ì¶œë ¥ê°€ëŠ¥
+	printf("ê³ ì • ì†Œìˆ˜ì   : %lf\n", d1);
 	printf("float size  : %d\n", sizeof(f1));
 	printf("double size  : %d\n", sizeof(d1));
 
 	/*
-	³í¸®Çü 
-	ture¿Í false°ª¸¸ °¡Áö´Â ÀÚ·áÇü
-	Á¤¼ö·Î true´Â 1, false´Â 0À» ÀÇ¹ÌÇÑ´Ù.
+	ë…¼ë¦¬í˜• 
+	tureì™€ falseê°’ë§Œ ê°€ì§€ëŠ” ìžë£Œí˜•
+	ì •ìˆ˜ë¡œ trueëŠ” 1, falseëŠ” 0ì„ ì˜ë¯¸í•œë‹¤.
 	*/
 
 	bool isDash = true; //1byte
-	printf("Ä³¸¯ÅÍ ´ë½¬ À¯¹« : %d\n", isDash);
-	printf("1 : ´ë½¬»óÅÂ ok 2 : ´ë½¬»óÅÂ x\n");
+	printf("ìºë¦­í„° ëŒ€ì‰¬ ìœ ë¬´ : %d\n", isDash);
+	printf("1 : ëŒ€ì‰¬ìƒíƒœ ok 2 : ëŒ€ì‰¬ìƒíƒœ x\n");
 
 	return 0;
-}
+} 
