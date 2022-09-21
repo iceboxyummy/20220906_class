@@ -5,23 +5,24 @@
 void print_arr(int arr[], int arr_size);
 void bubble_sort(int arr[], int arr_size);
 /* 
-	¹öºíÁ¤·Ä : ¼­·ÎÀÎÁ¢ÇÑ µÎ ¿ø¼Ò¸¦ ºñ±³ÇÏ¸ç Á¤·ÄÇÏ´Â ¾Ë°í¸®Áò
+	ë²„ë¸”ì •ë ¬ : ì„œë¡œì¸ì ‘í•œ ë‘ ì›ì†Œë¥¼ ë¹„êµí•˜ë©° ì •ë ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
 
-	 *¿À¸§Â÷¼ø ¹öºíÁ¤·Ä
-	 <1È¸Â÷>
+	 *ì˜¤ë¦„ì°¨ìˆœ ë²„ë¸”ì •ë ¬
+	 
+	 <1íšŒì°¨>
 	 [3 5] 4 1 2
 	 3 [5 4] 1 2
 	 3 4 [5 1] 2
 	 3 4 1 [5 2]
 	 3 4 1 2 5
-	 ¹Ýº¹
+	 ë°˜ë³µ
 */
 
 void selection_sort(int arr[], int arr_size);
 /*
-	¼±ÅÃÁ¤·Ä : È¸Â÷¸¶´Ù ÀÚ¸®´Â Á¤ÇØÁ® ÀÖ°í ÇØ´ç ÀÚ¸®¿¡ µé¾î°¥ ¿ø¼Ò¸¦ Ã£¾Æ ³Ö¾îÁÖ´Â ¾Ë°í¸®Áò
+	ì„ íƒì •ë ¬ : íšŒì°¨ë§ˆë‹¤ ìžë¦¬ëŠ” ì •í•´ì ¸ ìžˆê³  í•´ë‹¹ ìžë¦¬ì— ë“¤ì–´ê°ˆ ì›ì†Œë¥¼ ì°¾ì•„ ë„£ì–´ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜
 	
-	3 5 4 1 2 <- Á¦ÀÏ ³·À» 1À» ÀÎµ¦½º¿Í ±³È¯
+	3 5 4 1 2 <- ì œì¼ ë‚®ì„ 1ì„ ì•ž ì¸ë±ìŠ¤ì™€ êµí™˜
 	1 5 4 3 2
 	1 2 4 3 5
 	1 2 3 4 5
@@ -37,8 +38,11 @@ int main() {
 
 	return 0;
 }
-void print_arr(int arr[], int arr_size) {
 
+void print_arr(int arr[], int arr_size) {
+	for (int i = 0; i < arr_size; i++)
+		printf("%d, ", arr[i]);
+	printf("\n");
 }
 
 void bubble_sort(int arr[], int arr_size) {
@@ -58,7 +62,7 @@ void bubble_sort(int arr[], int arr_size) {
 }
 
 void selection_sort(int arr[], int arr_size) {
-	int minIndex = 0; // Á¤ÇØÁø ÀÚ¸®(i)¿¡ µé¾î°¥ ¿ø¼ÒÀÇ ÀÎµ¦½º
+	int minIndex = 0; // ì •í•´ì§„ ìžë¦¬(i)ì— ë“¤ì–´ê°ˆ ì›ì†Œì˜ ì¸ë±ìŠ¤
 	int temp = 0;
 	for (int i = 0; i < arr_size; i++)
 	{
