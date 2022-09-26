@@ -36,6 +36,17 @@ int main() {
 
 		printf("%s\n", dest);
 	}
+	{
+		char string[2][9] = { "Hello", "Hello" };
+		printf("%s, %s\n", string[0], string[1]);
+		if (compare(string[0], string[1]) == 0)
+	  //if (strcmp(string[0], string[1] == 0)
+			printf("같습니다\n");
+		else
+			printf("다릅니다!\n");
+
+		printf("결과 값 : %d", compare(string[0], string[1]));
+	}
 	return 0;
 }
 
@@ -77,7 +88,8 @@ void string(){
 		printf("%s\n", hello);
 }
 
-int length(char string[]) // NULL문자를 제외한 문자열의 문자 갯수를 세어주는 함수
+int length(char string[]) 
+// NULL문자를 제외한 문자열의 문자 갯수를 세어주는 함수
 {
 	int count = 0;
 
@@ -87,7 +99,8 @@ int length(char string[]) // NULL문자를 제외한 문자열의 문자 갯수를 세어주는 함�
 	return count;
 }
 
-void copy(char dest[], int count, char src[]) //src의 문자열 길이가 dest의 원소 개수보다 짧을경우,src의 문자열을 dest로 복사하는 함수
+void copy(char dest[], int count, char src[]) 
+//src의 문자열 길이가 dest의 원소 개수보다 짧을경우,src의 문자열을 dest로 복사하는 함수
 {
 	int length_src = length(src);
 	//작업을 하면 안되는 조건일떄 return시켜주어 끊어줄 수있다.
@@ -113,6 +126,12 @@ void catenate(char dest[], int count, char src[])
 }
 
 int compare(char string1[], char string2[])
+// 두 문자열이 같다면 0, 서로 다른 문자를 가지는 위치의 원소를 비교하여 string1이 크다면 +1 string2가 크다면-1을 반환하는 함수
 {
+	for (int i = 0; string1[i] != '\0' || string2[i] != '\0'; i++)
+	{
+		if (string1[i] > string2[i]) return 1;
+		if (string1[i] < string2[i]) return -1;	
+	}
 	return 0;
 }
