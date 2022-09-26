@@ -1,26 +1,26 @@
 // 20_function parameter
 
 /*
-   ¸Å°³º¯¼ö(parameter)
-   - ÇÔ¼ö¸¦ È£ÃâÇÒ ¶§ ¹Þ´Â °ªÀ» °¡¸®Å³ ¶§ »ç¿ëÇÏ´Â º¯¼ö
-   - ÇÔ¼öÀÇ Á¤ÀÇºÎ¿¡ ÀûÈù º¯¼ö¸¦ ÀÇ¹Ì
-   - Áö¿ªº¯¼ö·Î »ý¼ºµÇ±â ¶§¹®¿¡ ÇÔ¼öÀÇ ½ÃÀÛ¿¡ »ý¼ºµÇ°í ÇÔ¼ö°¡ Á¾·áµÇ¸é »ç¶óÁø´Ù.
+   ë§¤ê°œë³€ìˆ˜(parameter)
+   - í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•  ë•Œ ë°›ëŠ” ê°’ì„ ê°€ë¦¬í‚¬ ë•Œ ì‚¬ìš©í•˜ëŠ” ë³€ìˆ˜
+   - í•¨ìˆ˜ì˜ ì •ì˜ë¶€ì— ì ížŒ ë³€ìˆ˜ë¥¼ ì˜ë¯¸
+   - ì§€ì—­ë³€ìˆ˜ë¡œ ìƒì„±ë˜ê¸° ë•Œë¬¸ì— í•¨ìˆ˜ì˜ ì‹œìž‘ì— ìƒì„±ë˜ê³  í•¨ìˆ˜ê°€ ì¢…ë£Œë˜ë©´ ì‚¬ë¼ì§„ë‹¤.
 
-   ÀÎÀÚ(argument)
-   - ÇÔ¼ö¸¦ È£ÃâÇÒ ¶§ Àü´ÞµÇ´Â ½ÇÁ¦ °ª
-   - ÇÔ¼ö¸¦ È£ÃâÇÒ ¶§ »ç¿ëÇÑ ½ÇÁ¦ °ª.
+   ì¸ìž(argument)
+   - í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•  ë•Œ ì „ë‹¬ë˜ëŠ” ì‹¤ì œ ê°’
+   - í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•  ë•Œ ì‚¬ìš©í•œ ì‹¤ì œ ê°’.
 */
 
 #include<stdio.h>
 
 /*
    Call by value
-   - ÇÔ¼ö È£Ãâ½Ã ¹ÞÀº ÀÎÀÚÀÇ °ªÀ» º¹»çÇÏ¿© Àü´ÞÇÑ´Ù.
-   - °ªÀ» º¹»çÇÏ¿© °¡Á®°¡±â ¶§¹®¿¡ ¿øº»ÀÌ º¸Á¸ÀÌ µÈ´Ù.
-   - °ªÀ» º¹»çÇÏ¿© ³Ñ±â±â ¶§¹®¿¡ ¸Þ¸ð¸® »ç¿ë·®ÀÌ ´Ã¾î³­´Ù.
+   - í•¨ìˆ˜ í˜¸ì¶œì‹œ ë°›ì€ ì¸ìžì˜ ê°’ì„ ë³µì‚¬í•˜ì—¬ ì „ë‹¬í•œë‹¤.
+   - ê°’ì„ ë³µì‚¬í•˜ì—¬ ê°€ì ¸ê°€ê¸° ë•Œë¬¸ì— ì›ë³¸ì´ ë³´ì¡´ì´ ëœë‹¤.
+   - ê°’ì„ ë³µì‚¬í•˜ì—¬ ë„˜ê¸°ê¸° ë•Œë¬¸ì— ë©”ëª¨ë¦¬ ì‚¬ìš©ëŸ‰ì´ ëŠ˜ì–´ë‚œë‹¤.
 */
 
-void swap(int x, int y) // ¸Å°³ º¯¼ö
+void swap(int x, int y) // ë§¤ê°œ ë³€ìˆ˜
 {
     int tmep = x;
     x = y;
@@ -33,9 +33,9 @@ void swap(int x, int y) // ¸Å°³ º¯¼ö
    Call by address
    Call by pointer
    Call by reference
-   - ÇÔ¼ö¸¦ È£Ãâ½Ã ¹ÞÀº ÀÎÀÚÀÇ µ¥ÀÌÅÍ ÁÖ¼Ò¸¦ ¹Þ¾Æ Àü´ÞÇÑ´Ù.
-   - ¿øº»¿¡ Á¢±ÙÇÏ±â ¶§¹®¿¡ ¼öÁ¤ÇÒ °æ¿ì ¿øº»ÀÌ ¿µÇâÀ» ¹Þ´Â´Ù.
-   - º¹»çÇÏÁö ¾Ê°í ¿øº»À» ¹Þ¾Æ ¼Óµµ°¡ ºü¸£´Ù.
+   - í•¨ìˆ˜ë¥¼ í˜¸ì¶œì‹œ ë°›ì€ ì¸ìžì˜ ë°ì´í„° ì£¼ì†Œë¥¼ ë°›ì•„ ì „ë‹¬í•œë‹¤.
+   - ì›ë³¸ì— ì ‘ê·¼í•˜ê¸° ë•Œë¬¸ì— ìˆ˜ì •í•  ê²½ìš° ì›ë³¸ì´ ì˜í–¥ì„ ë°›ëŠ”ë‹¤.
+   - ë³µì‚¬í•˜ì§€ ì•Šê³  ì›ë³¸ì„ ë°›ì•„ ì†ë„ê°€ ë¹ ë¥´ë‹¤.
 */
 
 void swap_pointer(int* x, int* y)
@@ -53,7 +53,7 @@ int main()
     printf("i : %d\n", i);
     printf("j : %d\n\n", j);
 
-    swap(i, j); // ÀÎÀÚ : ÇÔ¼ö¸¦ È£ÃâÇÒ ¶§ »ç¿ëÇÑ ½ÇÁ¦ °ª
+    swap(i, j); // ì¸ìž : í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•  ë•Œ ì‚¬ìš©í•œ ì‹¤ì œ ê°’
 
     printf("i : %d\n", i);
     printf("j : %d\n\n", j);
@@ -62,6 +62,6 @@ int main()
 
     printf("i : %d\n", i);
     printf("j : %d\n\n", j);
-
+ 
     return 0;
 }
