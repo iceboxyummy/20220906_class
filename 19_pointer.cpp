@@ -20,16 +20,30 @@
 void pointer();
 void pointer_and_arr();
 void pointer_and_const();
-
 void void_pointer();
-
 void pointer_and_structure();
+void pointer_and_function();
+
+typedef struct {
+	char name[100];
+	char grade[100];
+	int damage;
+}weapon;
+
+typedef struct {
+	char name[100];
+	int hp;
+	weapon* equip_weapon;
+}player;
+
+void print_player(const player *  const p);
 
 int main() {
 	//pointer();
 	pointer_and_arr();
 	//pointer_and_const();
-
+	pointer_and_structure();
+	pointer_and_function();
 	return 0;
 }
 
@@ -152,9 +166,9 @@ void pointer_and_const()
 	{ // 6.c에서만 가능
 		const int a = 10;
 		// a = 10; <= 에러발생
-		int* a_ptr = &a;
+		//int* a_ptr = &a;
 		//a_ptr의 int가 상수가 아니라 수정 가능-> 문제 발생의 여지가 생긴다.
-		*a_ptr = 15; // .c에서는 가능	 	
+		//*a_ptr = 15; // .c에서는 가능	 	
 	}
 }
 
@@ -239,14 +253,158 @@ void pointer_and_structure()
 
 		struct friend_info test;
 		struct friend_info* best_friend = NULL;
-		//best_friend = test; <= error : 구조체 이름은 시작 주소를 가리키지 않는다.
+		// best_friend = test; <= error : 구조체 이름은 시작 주소를 가리키지 않는다.
 		best_friend = &my_friend[0];
 
 		/*
 			구조체 포인터로 멤버에 접근하는 법
 			* or -> 사용
 		*/
+
+		// *보다.연산자가 우선순위가 높으므로()로 우선순위를 정해주어야함
+		// best_friend.full_names; <= error : . 연산자가 먼저 처리됨
+		(*best_friend).full_names; // ok
+
+		printf("best_friend[0] 이름\t: %s\n", (*best_friend).full_names.given);
+
+		//구조체 포인터 에서는 ->는 구조체에서의. 연산자와같다.
+		printf("best_friend[0] 성\t: %s\n", best_friend->full_names.family);
+
+		best_friend++; // 구조체 단위 이동
+		printf("best_friend[1] 이름\t: %s\n", (*best_friend).full_names.given);
+		printf("best_friend[1] 성\t: %s\n", best_friend->full_names.family);
+	}
+
+	{
+		weapon sword = {
+			"mastersword",
+			"legend",
+			500
+		};
+
+		weapon bow = {
+			"brokenbow",
+			"common",
+			20
+		};
+
+		player p = {
+			"player",
+			100,
+			NULL
+		};
+
+		p.equip_weapon = &sword;
+		print_player(&p);
+
+		p.equip_weapon = &bow;
+		print_player(&p);
+
 	}
 }
- 
 
+int Add(int x, int y) { return x + y; }
+int Sub(int x, int y) { return x - y; }
+
+typedef struct _character
+{
+	char name[100];
+	char location[100];
+	int hp;
+	void(*if_dead[5])(struct _character*);
+}character;
+
+void print_dead(character* c)
+{
+	printf("%s 사망\n", c->name);
+}
+
+void revive(character* c)
+{
+	printf("%s 부활\n", c->name);
+	c->hp = 200;
+}
+
+void set_location_to_town(character* c)
+{
+	printf("마을로 이동합니다.\n");
+	strcpy_s(c->location, sizeof(c->location), "Town");
+}
+void pointer_and_function()
+{	
+	/*
+		함수 포인터 : 특정 자료형을 반환하고 특정 인자 목록을 가지는 함수를 저장하는 포인터
+		 - 함수의 이름은 함수의 주소
+		 - 프로그램을 유연하게 짤 수있다.
+
+		 선언
+		 자료형 (*변수명)(자료형, ...)
+
+		 사용
+		 변수명(값, ...)
+	 */
+	 
+	// 사용자로부터 + 또는 - 의 연산자와 두 정수를 입력받아 연산 결과를 출력하는 함수
+	char op = '\0';
+	printf("연산자 입력 : ");
+	scanf_s(" %c", &op, sizeof(op));
+
+	int x = 0;
+	printf("피연산자 입력 : ");
+	scanf_s("%d", &x);
+
+	int y = 0;
+	printf("피연산자 입력 : ");
+	scanf_s("%d", &y);
+
+	int (*compute)(int, int) = NULL;
+
+	switch (op) 
+	{
+	case '+':compute = Add; break; // 함수의 이름은 함수의 주소
+	case '-':compute = Sub; break; // 함수의 이름은 함수의 주소
+	}
+
+	if(compute != NULL)
+		printf("결과 : %d\n", compute(x, y));
+
+	// 특정 이벤트에서 실행시킬 함수를 걸어둘 수 있다.
+
+	character c = {
+		"Mage",
+		"Dungeon",
+		100,
+		{NULL, NULL,NULL,NULL,NULL}
+	};
+
+	c.if_dead[0] = print_dead;
+	c.if_dead[1] = revive;
+	c.if_dead[2] = set_location_to_town;
+
+	printf("%s의 위치 : %s hp : %d\n", c.name, c.location, c.hp);
+
+	while (1)
+	{
+		int dmg = 0;
+		printf("받을피해 입력(현재 체력 %d) : ", c.hp);
+		scanf_s("%d", &dmg);
+		c.hp -= dmg;
+		if (c.hp <= 0)
+		{
+			for (int i = 0; i < 5; i++)
+				if (c.if_dead[i] != NULL) // 이벤트가 있다면 호출해준다.
+					c.if_dead[i](&c);
+			break;
+		}
+	}
+
+	printf("%s의 위치 : %s hp : %d\n", c.name, c.location, c.hp);
+}
+
+void print_player(const player * const p)
+{
+	printf("\n플레이어 이름\t: %s\n", p->name);
+	printf("플레이어 hp\t: %d\n", p->hp);
+	printf("소지 무기\t: %s\n", p->equip_weapon->name);
+	printf("소지 무기등급\t: %s\n\n", p->equip_weapon->grade);
+}
