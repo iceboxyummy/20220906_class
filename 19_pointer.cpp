@@ -248,3 +248,4 @@ void pointer_and_structure()
 		*/
 	}
 }
+ 
