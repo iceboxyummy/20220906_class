@@ -733,5 +733,6 @@ void pointer_arr_and_2d_arr()
 			printf("\n");
 		}
 		printf("\n");
-	}	
+	}
+	
 }
