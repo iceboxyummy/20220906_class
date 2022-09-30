@@ -590,4 +590,149 @@ void pointer_arr_and_2d_arr()
 	printf("&a[0][0] : 0x%p\n", arr[0]);
 	printf("&a[0][0] : 0x%p\n", &arr[0]);
 	printf("&a[0][0] : 0x%p\n\n", &arr[0][0]);
+
+	// 한번 역참조하면 *arr == arr[0]
+	printf("&a[0][0] : 0x%p\n", *arr);
+	printf("&a[0][0] : 0x%p\n", &arr[0]);
+	printf("&a[0][0] : 0x%p\n\n", &arr[0][0]);
+
+	// 0행 0열 원소 접근
+	printf("arr[0][0] : %f, %f\n\n", **arr, arr[0][0]);
+
+	/*
+		arr[4][5]
+
+		*(*(arr + 1) + 3) == arr[1][3]
+
+		ㅁ ㅁ ㅁ ㅁ ㅁ
+		ㅁ ㅁ ㅁ ㅇ ㅁ
+		ㅁ ㅁ ㅁ ㅁ ㅁ
+		ㅁ ㅁ ㅁ ㅁ ㅁ
+	
+	*/
+
+	
+	// 행 이동 : arr[0][0] -> arr[1][0]
+	printf("0x%p\n", (arr + 1));
+	printf("0x%p\n", (&arr[1]));
+	printf("0x%p\n", *(arr + 1));
+	printf("0x%p\n", (&arr[0] + 1));
+	printf("0x%p\n\n", (&arr[1][0]));
+
+	// 행열 이동 arr[0][0] -> arr[0 + 1][0 + 2] -> arr[1][2]
+	// 1행으로 이동 후 2열 이동
+	printf("%f\n\n", *(*(arr + 1) + 2));
+
+	// 2차원 배열을 포인터에 넣기
+	{ // 1차원 배열을 단일 포인터에 담았으니 2차원은 2중 포인터에 담으면 될까?
+		int arr2[2][3] =
+		{
+			{ 0, 1, 2 },
+			{ 3, 4, 5 }
+		};
+
+		//int** ptr_arr = arr2; <= 자료형이 다르다는 경고가 나옴
+
+		//printf("%d", ptr_arr[0][0]); <= 엑세스 위반으로 error
+	}
+
+	{ // 1차원 배열과 포인터 배열로 2차원 배열표현
+		int arr0[3] = { 1, 2, 3 };
+		int arr1[3] = { 4, 5, 6 };
+
+		int* ptr_arr[2] = { arr0, arr1 };
+		
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				printf("%d( == %d, %d) => 0x%p\n",
+					ptr_arr[i][j],
+					*(ptr_arr[i] + j),
+					*(*(ptr_arr + i) + j),
+					&ptr_arr[i][j]);
+			}
+
+		}
+		printf("\n");
+	}
+
+	{ //2차원 배열과 포인터 배열을 조합하여 표현
+
+		int my_arr[2][3] = { {1,2,3}, {4,5,6} };
+
+		//포인터 배열
+		int* ptr_arr[3];
+		ptr_arr[0] = my_arr[0];
+		ptr_arr[1] = my_arr[1];
+
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				printf("%d %d %d %d 0x%p\n",
+					my_arr[i][j],
+					ptr_arr[i][j],
+					*(ptr_arr[i] + j),
+					*(*(ptr_arr + i) + j),
+					&my_arr[i][j]
+				);
+			}
+		}
+		printf("\n");
+	}
+
+	{	/*
+			배열 포인터 : 특정 크기와 자료형을 가진 배열을 가리키는 포인터
+			 - 선언후 배열만 대입해주면 추가 작업없이 다룰 수 있다.
+			 - 하나의 주소만 담을 수 있다.
+			 - 포인터 연산시 행단위로 이동함
+
+			 선언
+
+			 자료형(*변수명)[배열의 크기]
+		*/
+
+		int arr1[3] = { 0,1,2 };
+
+		int arr2[2][3] =
+		{
+			{0,1,2},
+			{3,4,5},
+		};
+
+		int arr3[3][3] = {
+			{0,1,2},
+			{3,4,5},
+			{6,7,8}
+		};
+
+		// 1차원 배열은 .c 에서만 가능하다.
+		int(*ptr_arr)[3] = arr1;
+
+		for (int j = 0; j < 3; j++)
+			printf("%d, ", ptr_arr[0][j]);
+		printf("\n\n");
+
+		ptr_arr = arr2;
+
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 3; j++)
+				printf("%d, ", ptr_arr[i][j]);
+			printf("\n");
+		}
+		printf("\n");
+
+		ptr_arr = arr3;
+
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+				printf("%d, ", ptr_arr[i][j]);
+			printf("\n");
+		}
+		printf("\n");
+	}
+	
 }
