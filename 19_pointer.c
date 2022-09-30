@@ -1,17 +1,17 @@
 // 19_pointer.cpp
 
 /*
-	Æ÷ÀÎÅÍ : Æ¯Á¤ °³Ã¼°¡ Â÷ÁöÇÏ´Â ¸Þ¸ð¸® °ø°£ÀÇ ½ÃÀÛÁÖ¼Ò¸¦ ÀúÀåÇÏ´Â º¯¼ö, ÁÖ¼Ò¸¦ °¡¸®Å²´Ù´Â ÀÇ¹Ì¿¡¼­ÀÇ Æ÷ÀÎÅÍÀÌ´Ù.
-	 - Æ÷ÀÎÅÍ´Â Æ¯Á¤ °³Ã¼ÀÇ ½ÃÀÛ ÁÖ¼Ò¸¸À» °¡¸®Å°±â ??¹®¿¡ Æ¯Á¤ °³Ã¼ÀÇ ÃÑ Å©±â´Â ¾Ë ¼ö ¾ø´Ù.
-	 - ¼±¾ð°ú µ¿½Ã¿¡ ÃÊ±âÈ­ ÇÏ´Â°ÍÀ» ±ÇÀåÇÑ´Ù. ÃÊ±âÈ­ µÇÁö ¾ÊÀº »óÅÂ·Î »ç¿ë½Ã ÀÇµµÇÏÁö¾ÊÀº ¸Þ¸ð¸®¸¦ »ç¿ëÇÏ°Å³ª º¯°æÇÒ ¼ö ÀÖ±â ¶§¹®ÀÌ´Ù.
-	 - Æ÷ÀÎÅÍÀÇ Å©±â´Â ¿î¿µ Ã¼Á¦¿¡ µû¶ó ´Ù¸£´Ù
-	  => 32bit ¿î¿µÃ¼Á¦ : 4byte
-	  => 64bit ¿î¿µÃ¼Á¦ : 8byte
-	  => 32bit¿Í 64bit´Â cpu°¡ µ¥ÀÌÅÍ¸¦ Ã³¸®ÇÏ´Âµ¥ »ç¿ëÇÏ´Â ÀÓ½Ã ·¹Áö½ºÅÍÀÇ Å©±â¸¦ ÀÇ¹ÌÇÑ´Ù.
-	  ·¹Áö½ºÅÍ´Â CPU°¡ ¸í·ÉÀ» Ã³¸®ÇÏ´Â µ¥ÀÌÅÍÀÇ ÀÓ½Ã ÀúÀå°ø°£ÀÓ.
-	  µû¶ó¼­ CPU°¡ ÇÑ¹ø¿¡ Ã³¸®ÇÒ ¼ö ÀÖ´Â µ¥ÀÌÅÍ·®Àº ·¹Áö½ºÅÍÀÇ Å©±â¸¦ µû¶ó°¥ ¼ö ¹Û¿¡ ¾øÀ½.
-	  32bit ¿î¿µÃ¼Á¦¸é 4¹ÙÀÌÆ® ÁÖ¼Ò¸¦ Ã³¸®ÇÏ´Âµ¥ ÇÑ°èÀÌ°í
-	  64bit ¿î¿µÃ¼Á¦¶ó¸é 8¹ÙÀÌÆ® Å©±âÀÇ ¸Þ¸ð¸® ÁÖ¼Ò¸¦ Ã³¸®ÇÏ´Â°Ô ÇÑ°èÀÓ.
+	í¬ì¸í„° : íŠ¹ì • ê°œì²´ê°€ ì°¨ì§€í•˜ëŠ” ë©”ëª¨ë¦¬ ê³µê°„ì˜ ì‹œìž‘ì£¼ì†Œë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜, ì£¼ì†Œë¥¼ ê°€ë¦¬í‚¨ë‹¤ëŠ” ì˜ë¯¸ì—ì„œì˜ í¬ì¸í„°ì´ë‹¤.
+	 - í¬ì¸í„°ëŠ” íŠ¹ì • ê°œì²´ì˜ ì‹œìž‘ ì£¼ì†Œë§Œì„ ê°€ë¦¬í‚¤ê¸° ??ë¬¸ì— íŠ¹ì • ê°œì²´ì˜ ì´ í¬ê¸°ëŠ” ì•Œ ìˆ˜ ì—†ë‹¤.
+	 - ì„ ì–¸ê³¼ ë™ì‹œì— ì´ˆê¸°í™” í•˜ëŠ”ê²ƒì„ ê¶Œìž¥í•œë‹¤. ì´ˆê¸°í™” ë˜ì§€ ì•Šì€ ìƒíƒœë¡œ ì‚¬ìš©ì‹œ ì˜ë„í•˜ì§€ì•Šì€ ë©”ëª¨ë¦¬ë¥¼ ì‚¬ìš©í•˜ê±°ë‚˜ ë³€ê²½í•  ìˆ˜ ìžˆê¸° ë•Œë¬¸ì´ë‹¤.
+	 - í¬ì¸í„°ì˜ í¬ê¸°ëŠ” ìš´ì˜ ì²´ì œì— ë”°ë¼ ë‹¤ë¥´ë‹¤
+	  => 32bit ìš´ì˜ì²´ì œ : 4byte
+	  => 64bit ìš´ì˜ì²´ì œ : 8byte
+	  => 32bitì™€ 64bitëŠ” cpuê°€ ë°ì´í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ”ë° ì‚¬ìš©í•˜ëŠ” ìž„ì‹œ ë ˆì§€ìŠ¤í„°ì˜ í¬ê¸°ë¥¼ ì˜ë¯¸í•œë‹¤.
+	  ë ˆì§€ìŠ¤í„°ëŠ” CPUê°€ ëª…ë ¹ì„ ì²˜ë¦¬í•˜ëŠ” ë°ì´í„°ì˜ ìž„ì‹œ ì €ìž¥ê³µê°„ìž„.
+	  ë”°ë¼ì„œ CPUê°€ í•œë²ˆì— ì²˜ë¦¬í•  ìˆ˜ ìžˆëŠ” ë°ì´í„°ëŸ‰ì€ ë ˆì§€ìŠ¤í„°ì˜ í¬ê¸°ë¥¼ ë”°ë¼ê°ˆ ìˆ˜ ë°–ì— ì—†ìŒ.
+	  32bit ìš´ì˜ì²´ì œë©´ 4ë°”ì´íŠ¸ ì£¼ì†Œë¥¼ ì²˜ë¦¬í•˜ëŠ”ë° í•œê³„ì´ê³ 
+	  64bit ìš´ì˜ì²´ì œë¼ë©´ 8ë°”ì´íŠ¸ í¬ê¸°ì˜ ë©”ëª¨ë¦¬ ì£¼ì†Œë¥¼ ì²˜ë¦¬í•˜ëŠ”ê²Œ í•œê³„ìž„.
 */
 
 #include <stdio.h>
@@ -57,77 +57,77 @@ int main() {
 void pointer()
 {
 	/*
-		¼±¾ð
-		ÀÚ·áÇü* º¯¼ö¸í
+		ì„ ì–¸
+		ìžë£Œí˜•* ë³€ìˆ˜ëª…
 
-		& ¿¬»êÀÚ  (ÂüÁ¶ ¿¬»êÀÚ)  : µ¥ÀÌÅÍÀÇ °ø°£ ÁÖ¼Ò°ªÀ» ¾Ë¾Æ¿À´Â ¿¬»êÀÚ
-		* ¿¬»êÀÚ (¿ªÂüÁ¶ ¿¬»êÀÚ) : ÁÖ¼Ò°ªÀÇ µ¥ÀÌÅÍ °ø°£¿¡ Á¢±ÙÇÏ´Â ¿¬»êÀÚ
+		& ì—°ì‚°ìž  (ì°¸ì¡° ì—°ì‚°ìž)  : ë°ì´í„°ì˜ ê³µê°„ ì£¼ì†Œê°’ì„ ì•Œì•„ì˜¤ëŠ” ì—°ì‚°ìž
+		* ì—°ì‚°ìž (ì—­ì°¸ì¡° ì—°ì‚°ìž) : ì£¼ì†Œê°’ì˜ ë°ì´í„° ê³µê°„ì— ì ‘ê·¼í•˜ëŠ” ì—°ì‚°ìž
 
-		ÁÖ¼Ò´Â 16Áø¼ö·Î Ç¥ÇöÀÌ µÇ´Âµ¥ 16Áø¼ö 2ÀÚ¸®¸¶´Ù 1¹ÙÀÌÆ®¸¦ ÀÇ¹ÌÇÑ´Ù.
-		2Áø¼ö 4ÀÚ¸®(4bit) == 16Áø¼ö 1ÀÚ¸®(4bit)
-		16Áø¼ö 2ÀÚ¸®(8bit) == 1byte
+		ì£¼ì†ŒëŠ” 16ì§„ìˆ˜ë¡œ í‘œí˜„ì´ ë˜ëŠ”ë° 16ì§„ìˆ˜ 2ìžë¦¬ë§ˆë‹¤ 1ë°”ì´íŠ¸ë¥¼ ì˜ë¯¸í•œë‹¤.
+		2ì§„ìˆ˜ 4ìžë¦¬(4bit) == 16ì§„ìˆ˜ 1ìžë¦¬(4bit)
+		16ì§„ìˆ˜ 2ìžë¦¬(8bit) == 1byte
 
-		%p : ÁÖ¼Ò(Æ÷ÀÎÅÍ)¸¦ Ãâ·ÂÇÒ ¶§ »ç¿ëÇÏ´Â Çü½Ä ÁöÁ¤ÀÚ
+		%p : ì£¼ì†Œ(í¬ì¸í„°)ë¥¼ ì¶œë ¥í•  ë•Œ ì‚¬ìš©í•˜ëŠ” í˜•ì‹ ì§€ì •ìž
 	*/
 
 	int i = 0;
 	int* ip1 = &i;
 
-	printf("iÀÇ ÁÖ¼Ò 0x%p \n", &i);
-	printf("ip1ÀÇ °ª 0x%p \n", ip1);
+	printf("iì˜ ì£¼ì†Œ 0x%p \n", &i);
+	printf("ip1ì˜ ê°’ 0x%p \n", ip1);
 
-	printf("iÀÇ °ª\t\t %d \n", i);
-	printf("ip1ÀÇ ¿ªÂüÁ¶\t %d\n", *ip1);
+	printf("iì˜ ê°’\t\t %d \n", i);
+	printf("ip1ì˜ ì—­ì°¸ì¡°\t %d\n", *ip1);
 
-	// 32bit, 64bit Â÷ÀÌ¿¡ µû¶ó Å©±â°¡ ¹Ù²ï´Ù.
-	printf("Æ÷ÀÎÅÍ ip1ÀÇ Å©±â : %d \n\n", sizeof(ip1));
+	// 32bit, 64bit ì°¨ì´ì— ë”°ë¼ í¬ê¸°ê°€ ë°”ë€ë‹¤.
+	printf("í¬ì¸í„° ip1ì˜ í¬ê¸° : %d \n\n", sizeof(ip1));
 }
 
 void pointer_and_arr()
 {
-	int arr[5] = { 0,1,2,3,4 }; // ¹è¿­ÀÇ ÀÌ¸§Àº ¹è¿­ÀÇ ½ÃÀÛÁÖ¼Ò¸¦ °¡¸®Å²´Ù.
+	int arr[5] = { 0,1,2,3,4 }; // ë°°ì—´ì˜ ì´ë¦„ì€ ë°°ì—´ì˜ ì‹œìž‘ì£¼ì†Œë¥¼ ê°€ë¦¬í‚¨ë‹¤.
 	int* arr_ptr = arr; // arr == &arr[0]
 
-	printf("arrÀÇ ÁÖ¼Ò\t : 0x%p\n", arr);
-	printf("arrÀÇ ÁÖ¼Ò\t : 0x%p\n", &arr);
-	printf("arrÀÇ ÁÖ¼Ò\t : 0x%p\n", &arr[0]);
-	printf("arr_ptrÀÇ °ª\t : 0x%p\n\n", arr_ptr);
+	printf("arrì˜ ì£¼ì†Œ\t : 0x%p\n", arr);
+	printf("arrì˜ ì£¼ì†Œ\t : 0x%p\n", &arr);
+	printf("arrì˜ ì£¼ì†Œ\t : 0x%p\n", &arr[0]);
+	printf("arr_ptrì˜ ê°’\t : 0x%p\n\n", arr_ptr);
 
-	printf("arrÀÇ ¿ªÂüÁ¶ °ª \t: %d\n", *arr);
-	printf("arrÀÇ 0¹øÁö ¿ø¼Ò \t: %d\n", arr[0]);
-	printf("arr_ptrÀÇ ¿ªÂüÁ¶ °ª \t: %d\n", *arr_ptr);
+	printf("arrì˜ ì—­ì°¸ì¡° ê°’ \t: %d\n", *arr);
+	printf("arrì˜ 0ë²ˆì§€ ì›ì†Œ \t: %d\n", arr[0]);
+	printf("arr_ptrì˜ ì—­ì°¸ì¡° ê°’ \t: %d\n", *arr_ptr);
 
 	/*
 		arr[0]==*(arr+0)
 		arr[0]==*(arr+0)
 
-		Æ÷ÀÎÅÍ´Â +, - ¿¬»êÀ¸·Î ÀÚ·áÇüÀ¸ Å©±â¸¸Å­ ÁÖ¼Ò¸¦ ÀÌµ¿ÇÑ´Ù.
-		ÀÚ·áÇüÀÌ voidÀÎ °æ¿ì´Â ºÒ°¡´É
-		º¯¼ö[ÀÎµ¦½º]°ªÀº *(º¯¼ö+ ÀÎµ¦½º)°ú µ¿ÀÏÇÏ´Ù.
+		í¬ì¸í„°ëŠ” +, - ì—°ì‚°ìœ¼ë¡œ ìžë£Œí˜•ìœ¼ í¬ê¸°ë§Œí¼ ì£¼ì†Œë¥¼ ì´ë™í•œë‹¤.
+		ìžë£Œí˜•ì´ voidì¸ ê²½ìš°ëŠ” ë¶ˆê°€ëŠ¥
+		ë³€ìˆ˜[ì¸ë±ìŠ¤]ê°’ì€ *(ë³€ìˆ˜+ ì¸ë±ìŠ¤)ê³¼ ë™ì¼í•˜ë‹¤.
 	*/
 
 	for (int i = 0; i < 5; i++)
-		printf("arr[%d]ÀÇ ÁÖ¼Ò : 0x%p\n", i, &arr[i]);
+		printf("arr[%d]ì˜ ì£¼ì†Œ : 0x%p\n", i, &arr[i]);
 	printf("\n");
 
 	for (int i = 0; i < 5; i++)
-		printf("arr[%d]ÀÇ ÁÖ¼Ò : 0x%p\n", i, &arr_ptr[i]);
+		printf("arr[%d]ì˜ ì£¼ì†Œ : 0x%p\n", i, &arr_ptr[i]);
 	printf("\n");
 
 	for (int i = 0; i < 5; i++)
-		printf("arr[%d]ÀÇ ÁÖ¼Ò : 0x%p\n", i, arr + i);
+		printf("arr[%d]ì˜ ì£¼ì†Œ : 0x%p\n", i, arr + i);
 	printf("\n");
 
 	for (int i = 0; i < 5; i++)
-		printf("arr[%d]ÀÇ ÁÖ¼Ò : 0x%p\n", i, arr_ptr + i);
+		printf("arr[%d]ì˜ ì£¼ì†Œ : 0x%p\n", i, arr_ptr + i);
 	printf("\n");
 }
 
 void pointer_and_const()
 {
 	/*
-	const´Â ¾ÕÀÇ ÀÚ·áÇüÀ» »ó¼öÈ­ ½ÃÄÑÁØ´Ù. => ÇØ´ç ¸Þ¸ð¸® °ø°£ÀÌ ¼öÁ¤ÀÌ ¾ÈµÈ´Ù.
-	¿¹¿ÜÀûÀ¸·Î const°¡ ¸Ç¾Õ¿¡ ÀÖÀ» °æ¿ì µÚÀÇ ÀÚ·áÇüÀ» »ó¼öÈ­½ÃÅ²´Ù.
+	constëŠ” ì•žì˜ ìžë£Œí˜•ì„ ìƒìˆ˜í™” ì‹œì¼œì¤€ë‹¤. => í•´ë‹¹ ë©”ëª¨ë¦¬ ê³µê°„ì´ ìˆ˜ì •ì´ ì•ˆëœë‹¤.
+	ì˜ˆì™¸ì ìœ¼ë¡œ constê°€ ë§¨ì•žì— ìžˆì„ ê²½ìš° ë’¤ì˜ ìžë£Œí˜•ì„ ìƒìˆ˜í™”ì‹œí‚¨ë‹¤.
 	*/
 
 
@@ -135,7 +135,7 @@ void pointer_and_const()
 	const double PT1 = 3.14;
 	double const PT2 = 3.14;
 
-	//PT1 = 1.24; <- »ó¼ö¸¦ º¯°æ½ÃÅ°·Á ÇÒ‹š´Â ¿¡·¯ ¹ß»ý
+	//PT1 = 1.24; <- ìƒìˆ˜ë¥¼ ë³€ê²½ì‹œí‚¤ë ¤ í• Â‹ÂšëŠ” ì—ëŸ¬ ë°œìƒ
 
 	
 	{ // 2
@@ -149,60 +149,60 @@ void pointer_and_const()
 	{ // 3
 		int a = 10;
 		int b = 10;
-		const int* a_ptr = &a; // int¸¦ »ó¼öÈ­
-		//*a_ptr = 10; <= ¿¡·¯ ¹ß»ý
+		const int* a_ptr = &a; // intë¥¼ ìƒìˆ˜í™”
+		//*a_ptr = 10; <= ì—ëŸ¬ ë°œìƒ
 		a_ptr = &b;
 	}
 
 	{ // 4
 		int a = 10;
 		int b = 10;
-		int* const a_ptr = &a; // *À» »ó¼öÈ­
+		int* const a_ptr = &a; // *ì„ ìƒìˆ˜í™”
 		*a_ptr = 10;
-		// a_ptr = &b; <= ¿¡·¯ ¹ß»ý
+		// a_ptr = &b; <= ì—ëŸ¬ ë°œìƒ
 	}
 
 	{ // 5
 		int a = 10;
 		int b = 10;
-		int const * const a_ptr = &a; // int¿Í *À» »ó¼öÈ­
-		// *a_ptr = 10; <= ¿¡·¯ ¹ß»ý
-		// a_ptr = &b; <= ¿¡·¯ ¹ß»ý
+		int const * const a_ptr = &a; // intì™€ *ì„ ìƒìˆ˜í™”
+		// *a_ptr = 10; <= ì—ëŸ¬ ë°œìƒ
+		// a_ptr = &b; <= ì—ëŸ¬ ë°œìƒ
 	}
 
-	{ // 6.c¿¡¼­¸¸ °¡´É
+	{ // 6.cì—ì„œë§Œ ê°€ëŠ¥
 		const int a = 10;
-		// a = 10; <= ¿¡·¯¹ß»ý
+		// a = 10; <= ì—ëŸ¬ë°œìƒ
 		//int* a_ptr = &a;
-		//a_ptrÀÇ int°¡ »ó¼ö°¡ ¾Æ´Ï¶ó ¼öÁ¤ °¡´É-> ¹®Á¦ ¹ß»ýÀÇ ¿©Áö°¡ »ý±ä´Ù.
-		//*a_ptr = 15; // .c¿¡¼­´Â °¡´É	 	
+		//a_ptrì˜ intê°€ ìƒìˆ˜ê°€ ì•„ë‹ˆë¼ ìˆ˜ì • ê°€ëŠ¥-> ë¬¸ì œ ë°œìƒì˜ ì—¬ì§€ê°€ ìƒê¸´ë‹¤.
+		//*a_ptr = 15; // .cì—ì„œëŠ” ê°€ëŠ¥	 	
 	}
 }
 
 void void_pointer()
 {
 	/*
-		void Æ÷ÀÎÅÍ
-		 - ÀÚ·áÇüÀÌ Á¤ÇØÁöÁö ¾ÊÀº Æ÷ÀÎÅÍ
-		 - ¾î¶² ÀÚ·áÇüÀÇ ÁÖ¼Òµç void Æ÷ÀÎÅÍ¿¡ ÀúÀå °¡´ÉÇÏ´Ù.
-		 - ÁÖ¼Ò¸¦ ¿ªÂüÁ¶ ÇÏ±â À§ÇØ¼­´Â Çüº¯È¯ ÇØÁÖ¾î¾ß ÇÑ´Ù.
+		void í¬ì¸í„°
+		 - ìžë£Œí˜•ì´ ì •í•´ì§€ì§€ ì•Šì€ í¬ì¸í„°
+		 - ì–´ë–¤ ìžë£Œí˜•ì˜ ì£¼ì†Œë“  void í¬ì¸í„°ì— ì €ìž¥ ê°€ëŠ¥í•˜ë‹¤.
+		 - ì£¼ì†Œë¥¼ ì—­ì°¸ì¡° í•˜ê¸° ìœ„í•´ì„œëŠ” í˜•ë³€í™˜ í•´ì£¼ì–´ì•¼ í•œë‹¤.
 	*/
 
 	int i[3] = { 0 };
-	int* int_ptr = i; // ok, ¾Ë¸ÂÀº ÀÚ·áÇü Æ÷ÀÎÅÍ
-	// double* double_ptr = i; // no, cpp¿¡¼­´Â ¼­·Î ´Ù¸¥ ÀÚ·áÇü Æ÷ÀÎÅÍ·Î ´ãÁö ¸øÇÑ´Ù.
-	void* void_ptr = i; // ¾î¶² ÀÚ·áÇüÀÇ ÁÖ¼ÒÀÎÁö´Â ¸ð¸£Áö¸¸ ¸ðµÎ ¹ÞÀ» ¼ö ÀÖ´Ù.
+	int* int_ptr = i; // ok, ì•Œë§žì€ ìžë£Œí˜• í¬ì¸í„°
+	// double* double_ptr = i; // no, cppì—ì„œëŠ” ì„œë¡œ ë‹¤ë¥¸ ìžë£Œí˜• í¬ì¸í„°ë¡œ ë‹´ì§€ ëª»í•œë‹¤.
+	void* void_ptr = i; // ì–´ë–¤ ìžë£Œí˜•ì˜ ì£¼ì†Œì¸ì§€ëŠ” ëª¨ë¥´ì§€ë§Œ ëª¨ë‘ ë°›ì„ ìˆ˜ ìžˆë‹¤.
 
 	/* 
-		printf("%d", *void_ptr); <= ¿¡·¯ ¹ß»ý
-		 - °¡Áö°í ÀÖ´Â ÁÖ¼ÒÀÇ ÀÚ·áÇüÀ» ¾Ë ¼ö ¾ø¾î ¿ªÂüÁ¶°¡ ¾ÈµÈ´Ù. 
-		 - ÀÐ¾î¾ßÇÏ´Â Å©±âµµ ¸ð¸£°í ÀÐ´Â ¹æ¹ýµµ ¸ð¸§
+		printf("%d", *void_ptr); <= ì—ëŸ¬ ë°œìƒ
+		 - ê°€ì§€ê³  ìžˆëŠ” ì£¼ì†Œì˜ ìžë£Œí˜•ì„ ì•Œ ìˆ˜ ì—†ì–´ ì—­ì°¸ì¡°ê°€ ì•ˆëœë‹¤. 
+		 - ì½ì–´ì•¼í•˜ëŠ” í¬ê¸°ë„ ëª¨ë¥´ê³  ì½ëŠ” ë°©ë²•ë„ ëª¨ë¦„
 	*/
 
-	// void_ptr¸¦ int*·Î Çüº¯È¯ ÇÏ¿© ¿ªÂüÁ¶
+	// void_ptrë¥¼ int*ë¡œ í˜•ë³€í™˜ í•˜ì—¬ ì—­ì°¸ì¡°
 	printf("%d\n", *(int*)void_ptr);
 
-	// void_ptr++; <= Æ÷ÀÎÅÍ ¿¬»êµµ ºÒ°¡´É, ¶ç¾î¾ß ÇÏ´Â Å©±â¸£ ¸ð¸§
+	// void_ptr++; <= í¬ì¸í„° ì—°ì‚°ë„ ë¶ˆê°€ëŠ¥, ë„ì–´ì•¼ í•˜ëŠ” í¬ê¸°ë¥´ ëª¨ë¦„
 	(int*)void_ptr + 1;
 
 }
@@ -217,18 +217,18 @@ void pointer_and_structure()
 	};
 
 	/*
-		±¸Á¶Ã¼ ¸â¹ö Á¢±Ù ¹æ¹ý
-		- ±¸Á¶Ã¼º¯¼öÀÌ¸§.
-		- .(member access operator) : ±¸Á¶Ã¼ ¸â¹ö¸¦ ÂüÁ¶ÇÏ´Â ¿¬»êÀÚ
+		êµ¬ì¡°ì²´ ë©¤ë²„ ì ‘ê·¼ ë°©ë²•
+		- êµ¬ì¡°ì²´ë³€ìˆ˜ì´ë¦„.
+		- .(member access operator) : êµ¬ì¡°ì²´ ë©¤ë²„ë¥¼ ì°¸ì¡°í•˜ëŠ” ì—°ì‚°ìž
 	*/
 
-	struct person p = { "È«±æµ¿", 30,175.25f };
+	struct person p = { "í™ê¸¸ë™", 30,175.25f };
 	p.height = 180.35f;
 
-	printf("pÀÇ height : %f\n", p.height);
-	printf("pÀÇ height ÁÖ¼Ò : 0x%p\n\n", &p.height); // . ¿¬»êÀÚ´Â &º¸´Ù ¿ì¼±¼øÀ§°¡ ³ô´Ù.
+	printf("pì˜ height : %f\n", p.height);
+	printf("pì˜ height ì£¼ì†Œ : 0x%p\n\n", &p.height); // . ì—°ì‚°ìžëŠ” &ë³´ë‹¤ ìš°ì„ ìˆœìœ„ê°€ ë†’ë‹¤.
 
-	{ // ±¸Á¶Ã¼´Â ¼±¾ðÇÑ ¿µ¿ª¿¡ ¿µÇâÀ» ¹Þ´Â´Ù.
+	{ // êµ¬ì¡°ì²´ëŠ” ì„ ì–¸í•œ ì˜ì—­ì— ì˜í–¥ì„ ë°›ëŠ”ë‹¤.
 		struct book
 		{
 			char test;
@@ -237,7 +237,7 @@ void pointer_and_structure()
 
 		// book a;
 	}
-	// book b; <= ¿¡·¯¹ß»ý
+	// book b; <= ì—ëŸ¬ë°œìƒ
 
 	{
 		struct names
@@ -260,26 +260,26 @@ void pointer_and_structure()
 
 		struct friend_info test;
 		struct friend_info* best_friend = NULL;
-		// best_friend = test; <= error : ±¸Á¶Ã¼ ÀÌ¸§Àº ½ÃÀÛ ÁÖ¼Ò¸¦ °¡¸®Å°Áö ¾Ê´Â´Ù.
+		// best_friend = test; <= error : êµ¬ì¡°ì²´ ì´ë¦„ì€ ì‹œìž‘ ì£¼ì†Œë¥¼ ê°€ë¦¬í‚¤ì§€ ì•ŠëŠ”ë‹¤.
 		best_friend = &my_friend[0];
 
 		/*
-			±¸Á¶Ã¼ Æ÷ÀÎÅÍ·Î ¸â¹ö¿¡ Á¢±ÙÇÏ´Â ¹ý
-			* or -> »ç¿ë
+			êµ¬ì¡°ì²´ í¬ì¸í„°ë¡œ ë©¤ë²„ì— ì ‘ê·¼í•˜ëŠ” ë²•
+			* or -> ì‚¬ìš©
 		*/
 
-		// *º¸´Ù.¿¬»êÀÚ°¡ ¿ì¼±¼øÀ§°¡ ³ôÀ¸¹Ç·Î()·Î ¿ì¼±¼øÀ§¸¦ Á¤ÇØÁÖ¾î¾ßÇÔ
-		// best_friend.full_names; <= error : . ¿¬»êÀÚ°¡ ¸ÕÀú Ã³¸®µÊ
+		// *ë³´ë‹¤.ì—°ì‚°ìžê°€ ìš°ì„ ìˆœìœ„ê°€ ë†’ìœ¼ë¯€ë¡œ()ë¡œ ìš°ì„ ìˆœìœ„ë¥¼ ì •í•´ì£¼ì–´ì•¼í•¨
+		// best_friend.full_names; <= error : . ì—°ì‚°ìžê°€ ë¨¼ì € ì²˜ë¦¬ë¨
 		(*best_friend).full_names; // ok
 
-		printf("best_friend[0] ÀÌ¸§\t: %s\n", (*best_friend).full_names.given);
+		printf("best_friend[0] ì´ë¦„\t: %s\n", (*best_friend).full_names.given);
 
-		//±¸Á¶Ã¼ Æ÷ÀÎÅÍ ¿¡¼­´Â ->´Â ±¸Á¶Ã¼¿¡¼­ÀÇ. ¿¬»êÀÚ¿Í°°´Ù.
-		printf("best_friend[0] ¼º\t: %s\n", best_friend->full_names.family);
+		//êµ¬ì¡°ì²´ í¬ì¸í„° ì—ì„œëŠ” ->ëŠ” êµ¬ì¡°ì²´ì—ì„œì˜. ì—°ì‚°ìžì™€ê°™ë‹¤.
+		printf("best_friend[0] ì„±\t: %s\n", best_friend->full_names.family);
 
-		best_friend++; // ±¸Á¶Ã¼ ´ÜÀ§ ÀÌµ¿
-		printf("best_friend[1] ÀÌ¸§\t: %s\n", (*best_friend).full_names.given);
-		printf("best_friend[1] ¼º\t: %s\n", best_friend->full_names.family);
+		best_friend++; // êµ¬ì¡°ì²´ ë‹¨ìœ„ ì´ë™
+		printf("best_friend[1] ì´ë¦„\t: %s\n", (*best_friend).full_names.given);
+		printf("best_friend[1] ì„±\t: %s\n", best_friend->full_names.family);
 	}
 
 	{
@@ -323,59 +323,59 @@ typedef struct _character
 
 void print_dead(character* c)
 {
-	printf("%s »ç¸Á\n", c->name);
+	printf("%s ì‚¬ë§\n", c->name);
 }
 
 void revive(character* c)
 {
-	printf("%s ºÎÈ°\n", c->name);
+	printf("%s ë¶€í™œ\n", c->name);
 	c->hp = 200;
 }
 
 void set_location_to_town(character* c)
 {
-	printf("¸¶À»·Î ÀÌµ¿ÇÕ´Ï´Ù.\n");
+	printf("ë§ˆì„ë¡œ ì´ë™í•©ë‹ˆë‹¤.\n");
 	strcpy_s(c->location, sizeof(c->location), "Town");
 }
 void pointer_and_function()
 {	
 	/*
-		ÇÔ¼ö Æ÷ÀÎÅÍ : Æ¯Á¤ ÀÚ·áÇüÀ» ¹ÝÈ¯ÇÏ°í Æ¯Á¤ ÀÎÀÚ ¸ñ·ÏÀ» °¡Áö´Â ÇÔ¼ö¸¦ ÀúÀåÇÏ´Â Æ÷ÀÎÅÍ
-		 - ÇÔ¼öÀÇ ÀÌ¸§Àº ÇÔ¼öÀÇ ÁÖ¼Ò
-		 - ÇÁ·Î±×·¥À» À¯¿¬ÇÏ°Ô Â© ¼öÀÖ´Ù.
+		í•¨ìˆ˜ í¬ì¸í„° : íŠ¹ì • ìžë£Œí˜•ì„ ë°˜í™˜í•˜ê³  íŠ¹ì • ì¸ìž ëª©ë¡ì„ ê°€ì§€ëŠ” í•¨ìˆ˜ë¥¼ ì €ìž¥í•˜ëŠ” í¬ì¸í„°
+		 - í•¨ìˆ˜ì˜ ì´ë¦„ì€ í•¨ìˆ˜ì˜ ì£¼ì†Œ
+		 - í”„ë¡œê·¸ëž¨ì„ ìœ ì—°í•˜ê²Œ ì§¤ ìˆ˜ìžˆë‹¤.
 
-		 ¼±¾ð
-		 ÀÚ·áÇü (*º¯¼ö¸í)(ÀÚ·áÇü, ...)
+		 ì„ ì–¸
+		 ìžë£Œí˜• (*ë³€ìˆ˜ëª…)(ìžë£Œí˜•, ...)
 
-		 »ç¿ë
-		 º¯¼ö¸í(°ª, ...)
+		 ì‚¬ìš©
+		 ë³€ìˆ˜ëª…(ê°’, ...)
 	 */
 	 
-	// »ç¿ëÀÚ·ÎºÎÅÍ + ¶Ç´Â - ÀÇ ¿¬»êÀÚ¿Í µÎ Á¤¼ö¸¦ ÀÔ·Â¹Þ¾Æ ¿¬»ê °á°ú¸¦ Ãâ·ÂÇÏ´Â ÇÔ¼ö
+	// ì‚¬ìš©ìžë¡œë¶€í„° + ë˜ëŠ” - ì˜ ì—°ì‚°ìžì™€ ë‘ ì •ìˆ˜ë¥¼ ìž…ë ¥ë°›ì•„ ì—°ì‚° ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
 	char op = '\0';
-	printf("¿¬»êÀÚ ÀÔ·Â : ");
+	printf("ì—°ì‚°ìž ìž…ë ¥ : ");
 	scanf_s(" %c", &op, sizeof(op));
 
 	int x = 0;
-	printf("ÇÇ¿¬»êÀÚ ÀÔ·Â : ");
+	printf("í”¼ì—°ì‚°ìž ìž…ë ¥ : ");
 	scanf_s("%d", &x);
 
 	int y = 0;
-	printf("ÇÇ¿¬»êÀÚ ÀÔ·Â : ");
+	printf("í”¼ì—°ì‚°ìž ìž…ë ¥ : ");
 	scanf_s("%d", &y);
 
 	int (*compute)(int, int) = NULL;
 
 	switch (op) 
 	{
-	case '+':compute = Add; break; // ÇÔ¼öÀÇ ÀÌ¸§Àº ÇÔ¼öÀÇ ÁÖ¼Ò
-	case '-':compute = Sub; break; // ÇÔ¼öÀÇ ÀÌ¸§Àº ÇÔ¼öÀÇ ÁÖ¼Ò
+	case '+':compute = Add; break; // í•¨ìˆ˜ì˜ ì´ë¦„ì€ í•¨ìˆ˜ì˜ ì£¼ì†Œ
+	case '-':compute = Sub; break; // í•¨ìˆ˜ì˜ ì´ë¦„ì€ í•¨ìˆ˜ì˜ ì£¼ì†Œ
 	}
 
 	if(compute != NULL)
-		printf("°á°ú : %d\n", compute(x, y));
+		printf("ê²°ê³¼ : %d\n", compute(x, y));
 
-	// Æ¯Á¤ ÀÌº¥Æ®¿¡¼­ ½ÇÇà½ÃÅ³ ÇÔ¼ö¸¦ °É¾îµÑ ¼ö ÀÖ´Ù.
+	// íŠ¹ì • ì´ë²¤íŠ¸ì—ì„œ ì‹¤í–‰ì‹œí‚¬ í•¨ìˆ˜ë¥¼ ê±¸ì–´ë‘˜ ìˆ˜ ìžˆë‹¤.
 
 	character c = {
 		"Mage",
@@ -384,43 +384,43 @@ void pointer_and_function()
 		{NULL, NULL,NULL,NULL,NULL}
 	};
 
-	// »ç¸Á ÀÌº¥Æ® ¹ß»ý½Ã ½ÇÇà½ÃÅ³ÇÔ¼ö¸¦ ³Ö¾îÁÜ
+	// ì‚¬ë§ ì´ë²¤íŠ¸ ë°œìƒì‹œ ì‹¤í–‰ì‹œí‚¬í•¨ìˆ˜ë¥¼ ë„£ì–´ì¤Œ
 	c.if_dead[0] = print_dead;
 	c.if_dead[1] = revive;
 	c.if_dead[2] = set_location_to_town;
 
-	printf("%sÀÇ À§Ä¡ : %s hp : %d\n", c.name, c.location, c.hp);
+	printf("%sì˜ ìœ„ì¹˜ : %s hp : %d\n", c.name, c.location, c.hp);
 
 	while (1)
 	{
 		int dmg = 0;
-		printf("¹ÞÀ»ÇÇÇØ ÀÔ·Â(ÇöÀç Ã¼·Â %d) : ", c.hp);
+		printf("ë°›ì„í”¼í•´ ìž…ë ¥(í˜„ìž¬ ì²´ë ¥ %d) : ", c.hp);
 		scanf_s("%d", &dmg);
 		c.hp -= dmg;
 		if (c.hp <= 0)
 		{
 			for (int i = 0; i < 5; i++)
-				if (c.if_dead[i] != NULL) // ÀÌº¥Æ®°¡ ÀÖ´Ù¸é È£ÃâÇØÁØ´Ù.
+				if (c.if_dead[i] != NULL) // ì´ë²¤íŠ¸ê°€ ìžˆë‹¤ë©´ í˜¸ì¶œí•´ì¤€ë‹¤.
 					c.if_dead[i](&c);
 			break;
 		}
 	}
 
-	printf("%sÀÇ À§Ä¡ : %s hp : %d\n", c.name, c.location, c.hp);
+	printf("%sì˜ ìœ„ì¹˜ : %s hp : %d\n", c.name, c.location, c.hp);
 }
 
 void print_player(const player * const p)
 {
-	printf("\nÇÃ·¹ÀÌ¾î ÀÌ¸§\t: %s\n", p->name);
-	printf("ÇÃ·¹ÀÌ¾î hp\t: %d\n", p->hp);
-	printf("¼ÒÁö ¹«±â\t: %s\n", p->equip_weapon->name);
-	printf("¼ÒÁö ¹«±âµî±Þ\t: %s\n\n", p->equip_weapon->grade);
+	printf("\ní”Œë ˆì´ì–´ ì´ë¦„\t: %s\n", p->name);
+	printf("í”Œë ˆì´ì–´ hp\t: %d\n", p->hp);
+	printf("ì†Œì§€ ë¬´ê¸°\t: %s\n", p->equip_weapon->name);
+	printf("ì†Œì§€ ë¬´ê¸°ë“±ê¸‰\t: %s\n\n", p->equip_weapon->grade);
 }
 
 /*
-	ÀÎÀÚ¸¦ ¹ÞÀ»‹š Æ÷ÀÎÅÍ º¯¼ö°¡ °¡Áø °ª(º¯¼öÀÇ ÁÖ¼Ò)¸¦ ¹Þ´Â´Ù.
-	 -> Æ÷ÀÎÅÍ º¯¼ö°¡ °¡Áø º¯¼öÀÇ °ªÀ» ¼öÁ¤ÇÒ ¼ö´Â ÀÖÁö¸¸ 
-	 ÇØ´ç °ªÀ» ³Ñ°ÜÁØ ¿øº»ÀÌ ¼ÒÀ¯ÇÑ °ª(º¯¼öÀÇ ÁÖ¼Ò)ÀÚÃ¼´Â º¯°æÀÌ ¾ÈµÈ´Ù.
+	ì¸ìžë¥¼ ë°›ì„Â‹Âš í¬ì¸í„° ë³€ìˆ˜ê°€ ê°€ì§„ ê°’(ë³€ìˆ˜ì˜ ì£¼ì†Œ)ë¥¼ ë°›ëŠ”ë‹¤.
+	 -> í¬ì¸í„° ë³€ìˆ˜ê°€ ê°€ì§„ ë³€ìˆ˜ì˜ ê°’ì„ ìˆ˜ì •í•  ìˆ˜ëŠ” ìžˆì§€ë§Œ 
+	 í•´ë‹¹ ê°’ì„ ë„˜ê²¨ì¤€ ì›ë³¸ì´ ì†Œìœ í•œ ê°’(ë³€ìˆ˜ì˜ ì£¼ì†Œ)ìžì²´ëŠ” ë³€ê²½ì´ ì•ˆëœë‹¤.
 */
 void swap_ptr1(int* ptr1, int* ptr2)
 {
@@ -432,8 +432,8 @@ void swap_ptr1(int* ptr1, int* ptr2)
 }
 
 /*
-	Æ÷ÀÎÅÍ º¯¼öÀÇ ÁÖ¼Ò°ªÀ» ÀÎÀÚ·Î ¹Þ¾Æ 
-	Æ÷ÀÎÅÍ º¯¼ö°¡ °¡Áö´Â °ª(º¯¼öÀÇ ÁÖ¼Ò)ÀÇ ¼öÁ¤ÀÌ °¡´ÉÇØÁø´Ù.
+	í¬ì¸í„° ë³€ìˆ˜ì˜ ì£¼ì†Œê°’ì„ ì¸ìžë¡œ ë°›ì•„ 
+	í¬ì¸í„° ë³€ìˆ˜ê°€ ê°€ì§€ëŠ” ê°’(ë³€ìˆ˜ì˜ ì£¼ì†Œ)ì˜ ìˆ˜ì •ì´ ê°€ëŠ¥í•´ì§„ë‹¤.
 */
 void swap_ptr2(int** ptr1, int** ptr2)
 {
@@ -448,9 +448,9 @@ void swap_ptr2(int** ptr1, int** ptr2)
 void double_pointer()
 {
 	/*
-		ÀÌÁß Æ÷ÀÎÅÍ(double pointer) : Æ÷ÀÎÅÍ º¯¼öÀÇ ÁÖ¼Ò¸¦ ÀúÀåÇÏ´Â º¯¼ö
-		 - »ïÁß ÀÌ»óµµ °¡´ÉÇÏÁö¸¸ »ç¿ëÇÏÁø ¾ÊÀ½
-		 - Æ÷ÀÎÅÍ º¯¼öÀÇ °ªÀ» º¯°æÇÏ±âÀ§ÇØ »ç¿ë
+		ì´ì¤‘ í¬ì¸í„°(double pointer) : í¬ì¸í„° ë³€ìˆ˜ì˜ ì£¼ì†Œë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
+		 - ì‚¼ì¤‘ ì´ìƒë„ ê°€ëŠ¥í•˜ì§€ë§Œ ì‚¬ìš©í•˜ì§„ ì•ŠìŒ
+		 - í¬ì¸í„° ë³€ìˆ˜ì˜ ê°’ì„ ë³€ê²½í•˜ê¸°ìœ„í•´ ì‚¬ìš©
 	*/
 
 	/*
@@ -470,9 +470,9 @@ void double_pointer()
 								 0x132|
 	*/
 
-	int a = 7; // º¯¼ö
-	int* ptr = &a; // º¯¼öÀÇ ÁÖ¼Ò¸¦ ÀúÀåÇÏ´Â ´ÜÀÏ Æ÷ÀÎÅÍ
-	int** pptr = &ptr;	// Æ÷ÀÎÅÍ ÁÖ¼ÒÀÇ º¯¼ö¸¦ ¹ö¹æÇÏ´Â ÀÌÁß Æ÷ÀÎÅÍ
+	int a = 7; // ë³€ìˆ˜
+	int* ptr = &a; // ë³€ìˆ˜ì˜ ì£¼ì†Œë¥¼ ì €ìž¥í•˜ëŠ” ë‹¨ì¼ í¬ì¸í„°
+	int** pptr = &ptr;	// í¬ì¸í„° ì£¼ì†Œì˜ ë³€ìˆ˜ë¥¼ ë²„ë°©í•˜ëŠ” ì´ì¤‘ í¬ì¸í„°
 
 	/*
 		pptr == &ptr
@@ -507,14 +507,14 @@ void double_pointer()
 	printf("ptr1 : 0x%p\n", ptr1);
 	printf("ptr2 : 0x%p\n\n", ptr2);
 
-	// Æ÷ÀÎÅÍ°¡ °¡Áø º¯¼öÀÇ ÁÖ¼Ò°ªÀÌ ÀÎÀÚ·Î µé¾î°¨
+	// í¬ì¸í„°ê°€ ê°€ì§„ ë³€ìˆ˜ì˜ ì£¼ì†Œê°’ì´ ì¸ìžë¡œ ë“¤ì–´ê°
 	swap_ptr1(ptr1, ptr2);
 
 	printf("***** after swap ptr1 *****\n");
 	printf("ptr1 : 0x%p\n", ptr1);
 	printf("ptr2 : 0x%p\n\n", ptr2);
 
-	// Æ÷ÀÎÅÍ º¯¼öÀÇ ¸Þ¸ð¸® ÁÖ¼Ò¸¦ ³Ñ°ÜÁÖ¹Ç·Î Æ÷ÀÎÅÍ º¯¼öÀÇ °ª ¼öÁ¤°¡´É
+	// í¬ì¸í„° ë³€ìˆ˜ì˜ ë©”ëª¨ë¦¬ ì£¼ì†Œë¥¼ ë„˜ê²¨ì£¼ë¯€ë¡œ í¬ì¸í„° ë³€ìˆ˜ì˜ ê°’ ìˆ˜ì •ê°€ëŠ¥
 	swap_ptr2(&ptr1, &ptr2);
 
 	printf("***** after swap ptr2 *****\n");
@@ -523,7 +523,7 @@ void double_pointer()
 }
 
 void pointer_arr()
-{ // Æ÷ÀÎÅÍ ¹è¿­ : Æ÷ÀÎÅÍ¸¦ ¿ø¼Ò·Î °¡Áö´Â ¹è¿­
+{ // í¬ì¸í„° ë°°ì—´ : í¬ì¸í„°ë¥¼ ì›ì†Œë¡œ ê°€ì§€ëŠ” ë°°ì—´
 	int a, b, c;
 	a = 1;
 	b = 2;
@@ -538,7 +538,7 @@ void pointer_arr()
 		printf("*arr[%d] : %d\n", i, ptr_arr[i][0]);
 	}
 
-	// ¹®ÀÚ¿­ÀÇ ½ÃÀÛÁÖ¼Ò¸¦ °¡Áö°í ÀÖ´Â Æ÷ÀÎÅÍ ¹è¿­
+	// ë¬¸ìžì—´ì˜ ì‹œìž‘ì£¼ì†Œë¥¼ ê°€ì§€ê³  ìžˆëŠ” í¬ì¸í„° ë°°ì—´
 	char* names1[4] =
 	{
 		"Aladdin",
@@ -548,22 +548,22 @@ void pointer_arr()
 	};
 
 	for (int i = 0; i < 4; i++)
-		printf("%s ¹®ÀÚ¿­ÀÇ ÁÖ¼Ò : 0x%p\n", names1[i], names1[i]);
+		printf("%s ë¬¸ìžì—´ì˜ ì£¼ì†Œ : 0x%p\n", names1[i], names1[i]);
 	printf("\n");
 
-	// º¹»çÇÏ¿© ¹Þ´Â°ÍÀÌ ¾Æ´Ñ ÇØ´ç ¹®ÀÚ¿­ »ó¼öÀÇ ½ÃÀÛ ÁÖ¼Ò¸¦ ¹Þ´Â´Ù.
+	// ë³µì‚¬í•˜ì—¬ ë°›ëŠ”ê²ƒì´ ì•„ë‹Œ í•´ë‹¹ ë¬¸ìžì—´ ìƒìˆ˜ì˜ ì‹œìž‘ ì£¼ì†Œë¥¼ ë°›ëŠ”ë‹¤.
 	char* test1 = "Hello";
 
-	// À§¿Í ´Ù¸£°Ô ½ÃÀÛ ÁÖ¼Ò¸¦ ¹Þ´Â°Ô ¾Æ´Ñ ¹è¿­¿¡ °ªÀ» º¹»çÇÑ´Ù.
+	// ìœ„ì™€ ë‹¤ë¥´ê²Œ ì‹œìž‘ ì£¼ì†Œë¥¼ ë°›ëŠ”ê²Œ ì•„ë‹Œ ë°°ì—´ì— ê°’ì„ ë³µì‚¬í•œë‹¤.
 	char test2[] = "Hello";
 
-	// ¹®ÀÚ¿­ »ó¼öÀÇ °ªÀ» ¹Ù²Ù·Á ½ÃµµÇÏ¸é ¹®Á¦°¡ ¹ß»ýÇÑ´Ù.
+	// ë¬¸ìžì—´ ìƒìˆ˜ì˜ ê°’ì„ ë°”ê¾¸ë ¤ ì‹œë„í•˜ë©´ ë¬¸ì œê°€ ë°œìƒí•œë‹¤.
 	//test1[0] = "h";
 
-	// º¹»çÇÑ °ªÀ» ÀúÀåÇÑ º¯¼ö¸¦ ¼öÁ¤ÇÒ »ÓÀÌ¹Ç·Î °¡´É
+	// ë³µì‚¬í•œ ê°’ì„ ì €ìž¥í•œ ë³€ìˆ˜ë¥¼ ìˆ˜ì •í•  ë¿ì´ë¯€ë¡œ ê°€ëŠ¥
 	test2[0] = "h";
 
-	// "Hello" ¹®ÀÚ¿­¿¡ µ¤¾î ¾º¿ì´Â °ÍÀÌ ¾Æ´Ñ »õ·Î¿î ¹®ÀÚ¿­ÀÇ ½ÃÀÛÁÖ¼Ò·Î ¹Ù²Þ
+	// "Hello" ë¬¸ìžì—´ì— ë®ì–´ ì”Œìš°ëŠ” ê²ƒì´ ì•„ë‹Œ ìƒˆë¡œìš´ ë¬¸ìžì—´ì˜ ì‹œìž‘ì£¼ì†Œë¡œ ë°”ê¿ˆ
 	test1 = "hhhhh";
 
 }
@@ -582,21 +582,21 @@ void pointer_arr_and_2d_arr()
 		*arr == arr[0]
 		**arr == arr[0][0]
 		 
-		 - 2Â÷¿ø ¹è¿­ÀÇ ½ÃÀÛÁÖ¼Ò´Â 0ÇàÀÇ ½ÃÀÛÁÖ¼ÒÀÌ´Ù.
+		 - 2ì°¨ì› ë°°ì—´ì˜ ì‹œìž‘ì£¼ì†ŒëŠ” 0í–‰ì˜ ì‹œìž‘ì£¼ì†Œì´ë‹¤.
 	*/
 
-	// Ã¹ ½ÃÀÛÁÖ¼Ò¸¦ Ç¥ÇöÇÏ´Â ¹ý
+	// ì²« ì‹œìž‘ì£¼ì†Œë¥¼ í‘œí˜„í•˜ëŠ” ë²•
 	printf("&a[0][0] : 0x%p\n", arr);
 	printf("&a[0][0] : 0x%p\n", arr[0]);
 	printf("&a[0][0] : 0x%p\n", &arr[0]);
 	printf("&a[0][0] : 0x%p\n\n", &arr[0][0]);
 
-	// ÇÑ¹ø ¿ªÂüÁ¶ÇÏ¸é *arr == arr[0]
+	// í•œë²ˆ ì—­ì°¸ì¡°í•˜ë©´ *arr == arr[0]
 	printf("&a[0][0] : 0x%p\n", *arr);
 	printf("&a[0][0] : 0x%p\n", &arr[0]);
 	printf("&a[0][0] : 0x%p\n\n", &arr[0][0]);
 
-	// 0Çà 0¿­ ¿ø¼Ò Á¢±Ù
+	// 0í–‰ 0ì—´ ì›ì†Œ ì ‘ê·¼
 	printf("arr[0][0] : %f, %f\n\n", **arr, arr[0][0]);
 
 	/*
@@ -604,39 +604,39 @@ void pointer_arr_and_2d_arr()
 
 		*(*(arr + 1) + 3) == arr[1][3]
 
-		¤± ¤± ¤± ¤± ¤±
-		¤± ¤± ¤± ¤· ¤±
-		¤± ¤± ¤± ¤± ¤±
-		¤± ¤± ¤± ¤± ¤±
+		ã… ã… ã… ã… ã…
+		ã… ã… ã… ã…‡ ã…
+		ã… ã… ã… ã… ã…
+		ã… ã… ã… ã… ã…
 	
 	*/
 
 	
-	// Çà ÀÌµ¿ : arr[0][0] -> arr[1][0]
+	// í–‰ ì´ë™ : arr[0][0] -> arr[1][0]
 	printf("0x%p\n", (arr + 1));
 	printf("0x%p\n", (&arr[1]));
 	printf("0x%p\n", *(arr + 1));
 	printf("0x%p\n", (&arr[0] + 1));
 	printf("0x%p\n\n", (&arr[1][0]));
 
-	// Çà¿­ ÀÌµ¿ arr[0][0] -> arr[0 + 1][0 + 2] -> arr[1][2]
-	// 1ÇàÀ¸·Î ÀÌµ¿ ÈÄ 2¿­ ÀÌµ¿
+	// í–‰ì—´ ì´ë™ arr[0][0] -> arr[0 + 1][0 + 2] -> arr[1][2]
+	// 1í–‰ìœ¼ë¡œ ì´ë™ í›„ 2ì—´ ì´ë™
 	printf("%f\n\n", *(*(arr + 1) + 2));
 
-	// 2Â÷¿ø ¹è¿­À» Æ÷ÀÎÅÍ¿¡ ³Ö±â
-	{ // 1Â÷¿ø ¹è¿­À» ´ÜÀÏ Æ÷ÀÎÅÍ¿¡ ´ã¾ÒÀ¸´Ï 2Â÷¿øÀº 2Áß Æ÷ÀÎÅÍ¿¡ ´ãÀ¸¸é µÉ±î?
+	// 2ì°¨ì› ë°°ì—´ì„ í¬ì¸í„°ì— ë„£ê¸°
+	{ // 1ì°¨ì› ë°°ì—´ì„ ë‹¨ì¼ í¬ì¸í„°ì— ë‹´ì•˜ìœ¼ë‹ˆ 2ì°¨ì›ì€ 2ì¤‘ í¬ì¸í„°ì— ë‹´ìœ¼ë©´ ë ê¹Œ?
 		int arr2[2][3] =
 		{
 			{ 0, 1, 2 },
 			{ 3, 4, 5 }
 		};
 
-		//int** ptr_arr = arr2; <= ÀÚ·áÇüÀÌ ´Ù¸£´Ù´Â °æ°í°¡ ³ª¿È
+		//int** ptr_arr = arr2; <= ìžë£Œí˜•ì´ ë‹¤ë¥´ë‹¤ëŠ” ê²½ê³ ê°€ ë‚˜ì˜´
 
-		//printf("%d", ptr_arr[0][0]); <= ¿¢¼¼½º À§¹ÝÀ¸·Î error
+		//printf("%d", ptr_arr[0][0]); <= ì—‘ì„¸ìŠ¤ ìœ„ë°˜ìœ¼ë¡œ error
 	}
 
-	{ // 1Â÷¿ø ¹è¿­°ú Æ÷ÀÎÅÍ ¹è¿­·Î 2Â÷¿ø ¹è¿­Ç¥Çö
+	{ // 1ì°¨ì› ë°°ì—´ê³¼ í¬ì¸í„° ë°°ì—´ë¡œ 2ì°¨ì› ë°°ì—´í‘œí˜„
 		int arr0[3] = { 1, 2, 3 };
 		int arr1[3] = { 4, 5, 6 };
 
@@ -657,11 +657,11 @@ void pointer_arr_and_2d_arr()
 		printf("\n");
 	}
 
-	{ //2Â÷¿ø ¹è¿­°ú Æ÷ÀÎÅÍ ¹è¿­À» Á¶ÇÕÇÏ¿© Ç¥Çö
+	{ //2ì°¨ì› ë°°ì—´ê³¼ í¬ì¸í„° ë°°ì—´ì„ ì¡°í•©í•˜ì—¬ í‘œí˜„
 
 		int my_arr[2][3] = { {1,2,3}, {4,5,6} };
 
-		//Æ÷ÀÎÅÍ ¹è¿­
+		//í¬ì¸í„° ë°°ì—´
 		int* ptr_arr[3];
 		ptr_arr[0] = my_arr[0];
 		ptr_arr[1] = my_arr[1];
@@ -683,14 +683,14 @@ void pointer_arr_and_2d_arr()
 	}
 
 	{	/*
-			¹è¿­ Æ÷ÀÎÅÍ : Æ¯Á¤ Å©±â¿Í ÀÚ·áÇüÀ» °¡Áø ¹è¿­À» °¡¸®Å°´Â Æ÷ÀÎÅÍ
-			 - ¼±¾ðÈÄ ¹è¿­¸¸ ´ëÀÔÇØÁÖ¸é Ãß°¡ ÀÛ¾÷¾øÀÌ ´Ù·ê ¼ö ÀÖ´Ù.
-			 - ÇÏ³ªÀÇ ÁÖ¼Ò¸¸ ´ãÀ» ¼ö ÀÖ´Ù.
-			 - Æ÷ÀÎÅÍ ¿¬»ê½Ã Çà´ÜÀ§·Î ÀÌµ¿ÇÔ
+			ë°°ì—´ í¬ì¸í„° : íŠ¹ì • í¬ê¸°ì™€ ìžë£Œí˜•ì„ ê°€ì§„ ë°°ì—´ì„ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°
+			 - ì„ ì–¸í›„ ë°°ì—´ë§Œ ëŒ€ìž…í•´ì£¼ë©´ ì¶”ê°€ ìž‘ì—…ì—†ì´ ë‹¤ë£° ìˆ˜ ìžˆë‹¤.
+			 - í•˜ë‚˜ì˜ ì£¼ì†Œë§Œ ë‹´ì„ ìˆ˜ ìžˆë‹¤.
+			 - í¬ì¸í„° ì—°ì‚°ì‹œ í–‰ë‹¨ìœ„ë¡œ ì´ë™í•¨
 
-			 ¼±¾ð
+			 ì„ ì–¸
 
-			 ÀÚ·áÇü(*º¯¼ö¸í)[¹è¿­ÀÇ Å©±â]
+			 ìžë£Œí˜•(*ë³€ìˆ˜ëª…)[ë°°ì—´ì˜ í¬ê¸°]
 		*/
 
 		int arr1[3] = { 0,1,2 };
@@ -707,7 +707,7 @@ void pointer_arr_and_2d_arr()
 			{6,7,8}
 		};
 
-		// 1Â÷¿ø ¹è¿­Àº .c ¿¡¼­¸¸ °¡´ÉÇÏ´Ù.
+		// 1ì°¨ì› ë°°ì—´ì€ .c ì—ì„œë§Œ ê°€ëŠ¥í•˜ë‹¤.
 		int(*ptr_arr)[3] = arr1;
 
 		for (int j = 0; j < 3; j++)
@@ -733,6 +733,5 @@ void pointer_arr_and_2d_arr()
 			printf("\n");
 		}
 		printf("\n");
-	}
-	
+	}	
 }
