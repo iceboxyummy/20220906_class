@@ -22,3 +22,52 @@
 
 // 메크로 상수 : 매크로 상수를 이름으로 다룰 수 있다.
 #define NUM 10
+
+/*
+	매크로 함수
+	 - 단순 치환이기에 인자의 자료형을 신경쓰지 않는다.
+	 = 함수 호출에 의한 성능 저하가 일어나지 않아 실행속도가 향상
+	 = 단순 치환이므로 디버깅이 되지 않는다.
+	 - 매크로 함수의 코드가 길어질수록 괄호가 많아져서 가족성이 떨어진다.
+	  ->간단하고 자주 출되는 함수에 사용하는게 유리
+*/
+
+ // 곱셈함수
+#define MUL1(x,y) (x*y) 
+#define MUL2(x,y) ((x)*(y)) 
+
+ // # : 인자를 문자열로 바꾸어 준다.
+ // 연속된 문자열은 하나로 합쳐진다. 결과 => printf("x : %d\n",x)
+#define PRINT(x) printf(#x" : %d\n",x)
+
+ // ## : 하나로 합쳐준다.
+#define STRUCTURE(x) typedef struct {int i;} STRUCTURE_##x
+
+//#define Test
+//
+//#ifdef Test
+//int i = 10;
+//#endif
+
+int main(){
+	int a = 3;
+	int b = 4;
+
+	int c1 = MUL1(a + 1, b + 1); // (x*y) => (a + 1 * b + 1 )
+	int c2 = MUL2(a + 1, b + 1); //((x)*(y)) => ((a + 1) * (b + 1))
+
+	printf("MUL1 = %d, MUL2=%d\n",c1, c2);
+
+	int number = 10;
+	PRINT(number);
+
+	STRUCTURE(001);
+	STRUCTURE(550);
+	STRUCTURE(00050);
+
+	STRUCTURE_001 s1;
+	STRUCTURE_550 s2;
+	STRUCTURE_00050 s3;
+
+	return 0;
+}
