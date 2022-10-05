@@ -1,20 +1,20 @@
- // Bingo.cpp
+// Bingo.cpp
 
 /*
-	ºù°íÆÇ
-	ºù°íÆÇ Å©±â
-	½Â¸®Á¶°Ç(ºù°íÈ½¼ö)
+	ë¹™ê³ íŒ
+	ë¹™ê³ íŒ í¬ê¸°
+	ìŠ¹ë¦¬ì¡°ê±´(ë¹™ê³ íšŸìˆ˜)
 
-	* ºù°íÆÇ¼¼ÆÃ
-	 - 1 ~ 25 ¼ø¼­´ë·Î °ªÀ» 2Â÷¿ø ¹è¾ó¿¡ ³Ö¾îÁØ´Ù.
-	 - ÀÓÀÇÀÇ ÀÎµ¦½º °ªÀ» 2°³ ¹Ş¾Æ¼­ ¼­·Î ½º¿ÒÇØÁØ´Ù.
+	* ë¹™ê³ íŒì„¸íŒ…
+	 - 1 ~ 25 ìˆœì„œëŒ€ë¡œ ê°’ì„ 2ì°¨ì› ë°°ì–¼ì— ë„£ì–´ì¤€ë‹¤.
+	 - ì„ì˜ì˜ ì¸ë±ìŠ¤ ê°’ì„ 2ê°œ ë°›ì•„ì„œ ì„œë¡œ ìŠ¤ì™‘í•´ì¤€ë‹¤.
 
-	* ºù°í ¹øÈ£ ÀÔ·Â
-	 - ¹øÈ£¸¦ ÀÔ·Â ¹Ş´Â´Ù.
-	 - ºù°íÆÇ¿¡¼­ ¹ŞÀº ¹øÈ£¸¦ Ã£¾Æ Ã¼Å©ÇØÁØ´Ù.
+	* ë¹™ê³  ë²ˆí˜¸ ì…ë ¥
+	 - ë²ˆí˜¸ë¥¼ ì…ë ¥ ë°›ëŠ”ë‹¤.
+	 - ë¹™ê³ íŒì—ì„œ ë°›ì€ ë²ˆí˜¸ë¥¼ ì°¾ì•„ ì²´í¬í•´ì¤€ë‹¤.
 
-	* ºù°í °¹¼ö Ã¼Å©
-	* ½Â¸® Á¶°Ç Ã¼Å©
+	* ë¹™ê³  ê°¯ìˆ˜ ì²´í¬
+	* ìŠ¹ë¦¬ ì¡°ê±´ ì²´í¬
 */
 
 #include <stdio.h>
@@ -27,18 +27,59 @@
 #define COMPLETE 5
 #define CHECK_NUMBER 0
 
-void print_board(int board[BINGO_SIZE][BINGO_SIZE]);
+int sel_number = 0; // ì„ íƒí•œ ìˆ«ì
+int bingo_count = 0; // ë¹™ê³  ê°¯ìˆ˜
+int prev_bingo_count = 0; // ì´ì „ ë¹™ê³  íšŸìˆ˜
+
+void swap(int board[BINGO_SIZE][BINGO_SIZE]); // ë¹™ê³ íŒ ìˆ«ìì„ê¸°
+void print_board(int board[BINGO_SIZE][BINGO_SIZE]); // ë¹™ê³ íŒ ì¶œë ¥
+int get_num(); // ìˆ«ìì„ íƒ
+void check_num(int board[BINGO_SIZE][BINGO_SIZE]); // ì„ íƒí•œ ìˆ«ì í™•ì¸
+int check_bingo(int board[BINGO_SIZE][BINGO_SIZE]); // ë¹™ê³  ê°¯ìˆ˜ í™•ì¸
+int check_win(int bingo_count, int prev_bingo_count); // ìŠ¹ë¦¬ì¡°ê±´ ì²´í¬
 
 int main() {
-	// °ÔÀÓ¼¼ÆÃ
-	int board[BINGO_SIZE][BINGO_SIZE] = {}; // ºù°í º¸µåÆÇ
-	int sel_number = 0; // ¼±ÅÃÇÑ ¹øÈ£
-	int bingo_count = 0; // ºù°í °¹¼ö
-	int prev_bingo_count = 0; // ÀÌÀü ºù°í È½¼ö
+	// ê²Œì„ì„¸íŒ…
+	int board[BINGO_SIZE][BINGO_SIZE] = {}; // ë¹™ê³  ë³´ë“œíŒ
 
+	swap(board);
+
+	// ê²Œì„ ì§„í–‰
+		while (bingo_count<COMPLETE)
+		{
+			print_board(board); 
+			do {
+				get_num();
+			} while (sel_number < 1 or sel_number >pow(BINGO_SIZE, 2));
+			system("cls");
+			check_num(board);
+			check_bingo(board);
+			check_win(bingo_count, prev_bingo_count);
+		} 
+		printf("ìŠ¹ë¦¬!\n");
+
+	return 0;
+}
+
+void print_board(int  board[BINGO_SIZE][BINGO_SIZE])
+{
+	for (int y = 0; y < BINGO_SIZE; y++)
+	{
+		for (int x = 0; x < BINGO_SIZE; x++)
+		{
+			if (board[y][x] == CHECK_NUMBER)
+				printf("%c\t", 35);
+			else
+				printf("%d\t", board[y][x]);
+		}
+		printf("\n");
+	}
+}
+
+void swap(int board[BINGO_SIZE][BINGO_SIZE])
+{
 	srand(time(NULL));
 	int num = 0;
-	
 
 	for (int y = 0; y < BINGO_SIZE; y++)
 		for (int x = 0; x < BINGO_SIZE; x++)
@@ -55,99 +96,75 @@ int main() {
 		board[a][b] = board[c][d];
 		board[c][d] = temp;
 	}
-
-	print_board(board);
-
-	while(1)
-		while (true)
-		{
-			bingo_count = 0;
-
-			// ¼ıÀÚÀÔ·Â
-			do {
-				printf("ÀÔ·Â : ");
-				scanf_s("%d", &sel_number);
-			} while (sel_number < 1 or sel_number >pow(BINGO_SIZE, 2));
-
-			system("cls");
-
-			// ÀÔ·Â ¹ŞÀ½ °ªÀ» º¸µåÆÇ¿¡¼­ Ã¼Å©
-			for (int y = 0; y < BINGO_SIZE; y++)
-			{
-				for (int x = 0; x < BINGO_SIZE; x++)
-				{
-					if (board[y][x] == sel_number)
-						board[y][x] = CHECK_NUMBER;
-				}
-			}
-			print_board(board);
-
-			// ºù°í °¹¼ö Ã¼Å©
-
-			for (int y = 0; y < BINGO_SIZE; y++) // °¡·ÎÁÙ Ã¼Å©
-			{
-				bool check = true;
-				for (int x = 1; x < BINGO_SIZE; x++)
-					check = check && board[y][0] == board[y][x];
-				
-				if (check == true) bingo_count++;
-			}
-
-			for (int x = 0; x < BINGO_SIZE; x++) // ¼¼·ÎÁÙ Ã¼Å©
-			{
-				bool check = true;
-				for (int y = 1; y < BINGO_SIZE; y++)
-					check = check && board[0][x] == board[y][x];
-
-				if (check == true) bingo_count++;
-			}
-
-			{	// \ ´ë°¢¼± Ã¼Å©
-				bool check = true;
-
-				for (int index = 1; index < BINGO_SIZE;index++)
-					check = check && board[0][0] == board[index][index];
-
-				if (check == true) bingo_count++;
-			}
-
-			{	// / ´ë°¢¼± Ã¼Å©
-				bool check = true;
-				int y = BINGO_SIZE - 1;
-				int x = 0;
-
-				for (int index = 0; index < BINGO_SIZE; index++)
-					check = check && board[y--][x++]== CHECK_NUMBER ;
-
-				if (check == true) bingo_count++;
-			}
-			// ½Â¸®Á¶°ÇÃ¼Å©
-			if (prev_bingo_count < bingo_count)
-			{
-				printf("%dÁÙ ºù°í!\n", bingo_count);
-				prev_bingo_count = bingo_count;
-
-				if (bingo_count >= COMPLETE)
-				{
-					printf("½Â¸®!\n");
-					break;
-				}
-			}
-		} // while(1) ·çÇÁ
-	return 0;
 }
 
-void print_board(int  board[BINGO_SIZE][BINGO_SIZE])
+int get_num() {
+	printf("ì…ë ¥ : ");
+	scanf_s("%d", &sel_number);
+
+	return sel_number;
+}
+
+void check_num(int board[BINGO_SIZE][BINGO_SIZE])
 {
 	for (int y = 0; y < BINGO_SIZE; y++)
 	{
 		for (int x = 0; x < BINGO_SIZE; x++)
 		{
-			if (board[y][x] == CHECK_NUMBER)
-				printf("%c\t",35);
-			else
-				printf("%d\t", board[y][x]);
+			if (board[y][x] == sel_number)
+				board[y][x] = CHECK_NUMBER;
 		}
-		printf("\n");
 	}
+}
+
+int check_bingo(int board[BINGO_SIZE][BINGO_SIZE])
+{
+	bingo_count = 0;
+
+	for (int y = 0; y < BINGO_SIZE; y++) // ê°€ë¡œì¤„ ì²´í¬
+	{
+		bool check = true;
+		for (int x = 1; x < BINGO_SIZE; x++)
+			check = check && board[y][0] == board[y][x];
+
+		if (check == true) bingo_count++;
+	}
+
+	for (int x = 0; x < BINGO_SIZE; x++) // ì„¸ë¡œì¤„ ì²´í¬
+	{
+		bool check = true;
+		for (int y = 0; y < BINGO_SIZE; y++)
+			check = check && board[0][x] == board[y][x];
+
+		if (check == true) bingo_count++;
+	}
+
+	{	// \ ëŒ€ê°ì„  ì²´í¬
+		bool check = true;
+		for (int index = 1; index < BINGO_SIZE; index++)
+			check = check && board[0][0] == board[index][index];
+
+		if (check == true) bingo_count++;
+	}
+
+	{	// / ëŒ€ê°ì„  ì²´í¬
+		bool check = true;
+		int y = BINGO_SIZE - 1;
+		int x = 0;
+
+		for (int index = 0; index < BINGO_SIZE; index++)
+			check = check && board[y--][x++] == CHECK_NUMBER;
+
+		if (check == true) bingo_count++;
+	}
+	return bingo_count;
+}
+
+int check_win(int bingo_count, int prev_bingo_count) {
+	if (prev_bingo_count < bingo_count)
+	{
+		printf("%dì¤„ ë¹™ê³ !\n", bingo_count);
+		prev_bingo_count = bingo_count;
+	}
+	return prev_bingo_count;
 }
