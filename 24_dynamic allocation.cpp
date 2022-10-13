@@ -23,7 +23,20 @@ char* scan_name();
 int main() {
 
 	// dynamic_allocation();
-	using_dynamic_storage_allocation_like_an_array();
+	//using_dynamic_storage_allocation_like_an_array();
+
+	while (true)
+	{
+		char* name = scan_name();
+		if (name != NULL)
+			printf("name : %s\n", name);
+
+		if (name != NULL)
+		{
+			free(name);
+			name = NULL;
+		}
+	}
 
 	return 0;
 }
@@ -259,10 +272,51 @@ void using_dynamic_storage_allocation_like_an_array()
 		  find index ===> c(목표 열) + col(한줄의 크기) * r(목표 행)
 		  **************************************************
 	   */
+
+		int row = 3, col = 2;
+
+		int* ptr = (int*)malloc(row * col * sizeof(int));
+		if (!ptr) exit(1);
+
+		for (int r = 0; r < row; r++)
+			for (int c = 0; c < col; c++)
+				ptr[c + col * r] = c + col * r;
+
+		for (int r = 0; r < row; r++)
+		{
+			for (int c = 0; c < col; c++)
+				printf("%d ", *(ptr + c + col * r));
+			printf("\n");
+		}
+
+		free(ptr);
+		ptr = NULL;
 	}
 }
 
 char* scan_name()
 {
-	return nullptr;
+	/*
+		사용자로부터 적절한 크기의 공간에 문자열을 입력을받아 
+		해당 문자열 크기만큼의 공간을 만들어 내용을 복사하고 
+		그 공간의 포인터를 반환하는 함수 scan_name
+	*/
+
+	char buffer[100] = { 0 };
+
+	printf("이름을 입력해 주세요 : ");
+	scanf_s("%s", buffer, sizeof(buffer));
+
+	int size = strlen(buffer) + sizeof((char)('\0'));
+
+	if (size == sizeof((char)('\0')))
+		return NULL;
+
+	char* name = (char*)calloc(size, sizeof(char));
+
+	if (name != NULL)
+		strcpy_s(name, size, buffer);
+
+
+	return buffer;
 }
