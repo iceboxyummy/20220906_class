@@ -3,6 +3,7 @@
   <ItemGroup>
     <ClCompile Include="22_preprocessor1\preprocessor.cpp" />
     <ClCompile Include="22_preprocessor1\test1.cpp" />
+    <ClCompile Include="24_dynamic allocation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="22_preprocessor1\test1.h" />
