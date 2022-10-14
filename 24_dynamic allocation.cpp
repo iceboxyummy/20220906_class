@@ -1,15 +1,15 @@
 // 24_dynamic allocation.cpp
 
 /*
-	µ¿Àû ÇÒ´ç(dynamic allocation) : ÇÁ·Î±×·¥ ½ÇÇàµµÁß¿¡ ¸Þ¸ð¸® °ø°£À» ÇÒ´çÇÏ´Â°Í
-	 - ·±Å¸ÀÓ(ÇÁ·Î±×·¥ÀÌ ½ÇÇàÁß)ÀÏ¶§ Å©±â°¡ °áÁ¤µÈ´Ù.
-	 - »ç¿ëÀÚ°¡ ¿øÇÏ´Â ½ÃÁ¡¿¡ ¸Þ¸ð¸®¸¦ ÇÒ´çÇÏ°í ÇØÁ¦ÇÒ ¼ö ÀÖ´Ù.
-	 - ¸Þ¸ð¸®¸¦ ´õÀÌ»ó »ç¿ëÇÏÁö ¾ÊÀ» ¶§ ¹Ý³³(free)ÇÏÁö ¾ÊÀ¸¸é ¸Þ¸ð¸® ´©¼ö(memory leak)°¡ ÀÏ¾î³­´Ù.
-	 - Èü¿µ¿ª¿¡ ÇÒ´çµÈ´Ù.
+	ë™ì  í• ë‹¹(dynamic allocation) : í”„ë¡œê·¸ëž¨ ì‹¤í–‰ë„ì¤‘ì— ë©”ëª¨ë¦¬ ê³µê°„ì„ í• ë‹¹í•˜ëŠ”ê²ƒ
+	 - ëŸ°íƒ€ìž„(í”„ë¡œê·¸ëž¨ì´ ì‹¤í–‰ì¤‘)ì¼ë•Œ í¬ê¸°ê°€ ê²°ì •ëœë‹¤.
+	 - ì‚¬ìš©ìžê°€ ì›í•˜ëŠ” ì‹œì ì— ë©”ëª¨ë¦¬ë¥¼ í• ë‹¹í•˜ê³  í•´ì œí•  ìˆ˜ ìžˆë‹¤.
+	 - ë©”ëª¨ë¦¬ë¥¼ ë”ì´ìƒ ì‚¬ìš©í•˜ì§€ ì•Šì„ ë•Œ ë°˜ë‚©(free)í•˜ì§€ ì•Šìœ¼ë©´ ë©”ëª¨ë¦¬ ëˆ„ìˆ˜(memory leak)ê°€ ì¼ì–´ë‚œë‹¤.
+	 - íž™ì˜ì—­ì— í• ë‹¹ëœë‹¤.
 
-	 ¼±¾ð
-	 (ÀÚ·áÇü *) malloc (¸Þ¸ð¸®ÀÇ »çÀÌÁî)
-	 (ÀÚ·áÇü* ) calloc (°³¼ö, ÀÚ·áÇüÀÇ Å©±â)
+	 ì„ ì–¸
+	 (ìžë£Œí˜• *) malloc (ë©”ëª¨ë¦¬ì˜ ì‚¬ì´ì¦ˆ)
+	 (ìžë£Œí˜•* ) calloc (ê°œìˆ˜, ìžë£Œí˜•ì˜ í¬ê¸°)
 */
 
 #include <stdio.h>
@@ -48,42 +48,42 @@ void dynamic_allocation()
 
 		int size = 5;
 
-		// ¹ÝÈ¯°ªÀÌ void*ÀÌ±â ‹š¹®¿¡ Ä³½ºÆÃÀÌ ÇÊ¿ä
+		// ë°˜í™˜ê°’ì´ void*ì´ê¸° Â‹Âšë¬¸ì— ìºìŠ¤íŒ…ì´ í•„ìš”
 		ptr = (int*)malloc(sizeof(int) * size);
 
 		if (ptr == NULL)
 		{
-			printf("¸Þ¸ð¸® ÇÒ´ç ½ÇÆÐ!\n");
+			printf("ë©”ëª¨ë¦¬ í• ë‹¹ ì‹¤íŒ¨!\n");
 
-			// ÇÁ·Î±×·¥À» Á¾·á½ÃÅ°´Â ÇÔ¼ö, Á¾·á¿Í ÇÔ²² ¹ÞÀº ÀÎÀÚ°ªÀ» ¿î¿µÃ¼Á¦¿¡ ³Ñ±ä´Ù.
+			// í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œì‹œí‚¤ëŠ” í•¨ìˆ˜, ì¢…ë£Œì™€ í•¨ê»˜ ë°›ì€ ì¸ìžê°’ì„ ìš´ì˜ì²´ì œì— ë„˜ê¸´ë‹¤.
 			exit(EXIT_FAILURE);
 		}
 
 		/*
-			¸Þ¸ð¸® ´©¼ö(memory leak) : ÇÁ·Î±×·¥ÀÌ ´õÀÌ»ó ÇÊ¿äÇÏÁö ¾ÊÀº ¸Þ¸ð¸®¸¦ °è¼Ó °¡Áö°í ÀÖ´Â »óÅÂ
-			 - ¸Þ¸ð¸®¸¦ ³¶ºñÇÏ°ÔµÇ¾î ÇÁ·Î±×·¥ÀÌ ºÒ¾ÈÁ¤ÇØÁø´Ù.
-			 - µ¿ÀûÇÒ´çÇÑ ¸Þ¸ð¸®¸¦ ÇØÁ¦ÇÏ±âÀü¿¡ ÇØ´ç ¸Þ¸ð¸®¸¦ °¡¸®Å°´Â Æ÷ÀÎÅÍ°¡ ¼Ò¸êµÇ¸é ¸Þ¸ð¸® ´©¼ö°¡ ¹ß»ýÇÑ´Ù.
-			 - »ç¿ë ÈÄ¿¡´Â ¹«Á¶°Ç ÇØÁ¦ÇØÁØ´Ù.
-			 - µ¿ÀûÇÒ´ç½Ã »ý¼º°ú »èÁ¦ÄÚµå¸¦ µ¿½Ã¿¡ ÀÛ¼ºÇØÁØ´Ù.
+			ë©”ëª¨ë¦¬ ëˆ„ìˆ˜(memory leak) : í”„ë¡œê·¸ëž¨ì´ ë”ì´ìƒ í•„ìš”í•˜ì§€ ì•Šì€ ë©”ëª¨ë¦¬ë¥¼ ê³„ì† ê°€ì§€ê³  ìžˆëŠ” ìƒíƒœ
+			 - ë©”ëª¨ë¦¬ë¥¼ ë‚­ë¹„í•˜ê²Œë˜ì–´ í”„ë¡œê·¸ëž¨ì´ ë¶ˆì•ˆì •í•´ì§„ë‹¤.
+			 - ë™ì í• ë‹¹í•œ ë©”ëª¨ë¦¬ë¥¼ í•´ì œí•˜ê¸°ì „ì— í•´ë‹¹ ë©”ëª¨ë¦¬ë¥¼ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°ê°€ ì†Œë©¸ë˜ë©´ ë©”ëª¨ë¦¬ ëˆ„ìˆ˜ê°€ ë°œìƒí•œë‹¤.
+			 - ì‚¬ìš© í›„ì—ëŠ” ë¬´ì¡°ê±´ í•´ì œí•´ì¤€ë‹¤.
+			 - ë™ì í• ë‹¹ì‹œ ìƒì„±ê³¼ ì‚­ì œì½”ë“œë¥¼ ë™ì‹œì— ìž‘ì„±í•´ì¤€ë‹¤.
 		*/
 
 		printf("Before free 0x%p\n", ptr);
 
-		free(ptr); // µ¿ÀûÇÒ´çÇÑ ¸Þ¸ð¸® °ø°£À» ÇØÁ¦ÇÑ´Ù.
+		free(ptr); // ë™ì í• ë‹¹í•œ ë©”ëª¨ë¦¬ ê³µê°„ì„ í•´ì œí•œë‹¤.
 
-		printf("After free 0x%p\n", ptr); // ¸Þ¸ð¸®´Â ÇØÁ¦ µÇ¾úÁö¸¸ ÁÖ¼Ò´Â ³²¾ÆÀÖ´Ù. ->dangling pointer
+		printf("After free 0x%p\n", ptr); // ë©”ëª¨ë¦¬ëŠ” í•´ì œ ë˜ì—ˆì§€ë§Œ ì£¼ì†ŒëŠ” ë‚¨ì•„ìžˆë‹¤. ->dangling pointer
 
 
 		/*
-			*ptr = 10;  »ç¶óÁø ÁÖ¼Ò¿¡ Á¢±ÙÇÏ·Á ½ÃµµÇÔ -> ¹®Á¦¹ß»ý
+			*ptr = 10;  ì‚¬ë¼ì§„ ì£¼ì†Œì— ì ‘ê·¼í•˜ë ¤ ì‹œë„í•¨ -> ë¬¸ì œë°œìƒ
 
-			Çã»ó Æ÷ÀÎÅÍ (dangling pointer) : ¸Þ¸ð¸®°¡ ÇØÁ¦µÈ ÁÖ¼Ò¸¦ °¡¸®Å°´Â Æ÷ÀÎÅÍ
-			 - ¸Þ¸ð¸®¸¦ ÇØÁ¦ÇØµµ Æ÷ÀÎÅÍ´Â »ç¶óÁø ÁÖ¼Ò°ªÀ» °¡¸®Å°°í ÀÖ±â ‹š¹®¿¡ ¹ß»ýÇÑ´Ù.
-			 - Á¢±Ù½Ã ¿¹ÃøºÒ°¡´ÉÇÑ ¹®Á¦¸¦ ÀÏÀ¸Å³ ¼ö ÀÖ´Ù.
-			 - ¸Þ¸ð¸® ÇØÁ¦ÈÄ NULL·Î ÃÊ±âÈ­ ÇØÁÖ¾î¾ß ÇÑ´Ù.
+			í—ˆìƒ í¬ì¸í„° (dangling pointer) : ë©”ëª¨ë¦¬ê°€ í•´ì œëœ ì£¼ì†Œë¥¼ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°
+			 - ë©”ëª¨ë¦¬ë¥¼ í•´ì œí•´ë„ í¬ì¸í„°ëŠ” ì‚¬ë¼ì§„ ì£¼ì†Œê°’ì„ ê°€ë¦¬í‚¤ê³  ìžˆê¸° Â‹Âšë¬¸ì— ë°œìƒí•œë‹¤.
+			 - ì ‘ê·¼ì‹œ ì˜ˆì¸¡ë¶ˆê°€ëŠ¥í•œ ë¬¸ì œë¥¼ ì¼ìœ¼í‚¬ ìˆ˜ ìžˆë‹¤.
+			 - ë©”ëª¨ë¦¬ í•´ì œí›„ NULLë¡œ ì´ˆê¸°í™” í•´ì£¼ì–´ì•¼ í•œë‹¤.
 		*/
 
-		ptr = NULL; // ÇØÁ¦ÇÑ ÈÄ¿¡´Â NULL·Î ÃÊ±âÈ­ ÇØÁØ´Ù.
+		ptr = NULL; // í•´ì œí•œ í›„ì—ëŠ” NULLë¡œ ì´ˆê¸°í™” í•´ì¤€ë‹¤.
 
 		printf("After free 0x%p\n", ptr);
 		if (ptr != NULL)
@@ -98,19 +98,19 @@ void dynamic_allocation()
 		SAFE_FREE(ptr);
 	}
 
-	// malloc°ú callocÀÇ Â÷ÀÌ
+	// mallocê³¼ callocì˜ ì°¨ì´
 	{
 		int size = 0;
 
-		printf("ÇÊ¿äÇÑ intÀÇ °³¼ö : ");
+		printf("í•„ìš”í•œ intì˜ ê°œìˆ˜ : ");
 		scanf_s("%d", &size);
 
 		int* ma = (int*)malloc(sizeof(int) * size);
 		int* ca = (int*)calloc(size, sizeof(int));
 
-		// malloc : ¼±¾ð½Ã ÃÊ±âÈ­ x => ¾²·¹±â°ª
-		// calloc : ¼±¾ð½Ã 0À¸·Î ÃÊ±âÈ­ 
-		printf("\nÃÊ±âÈ­ Àü\n\n");
+		// malloc : ì„ ì–¸ì‹œ ì´ˆê¸°í™” x => ì“°ë ˆê¸°ê°’
+		// calloc : ì„ ì–¸ì‹œ 0ìœ¼ë¡œ ì´ˆê¸°í™” 
+		printf("\nì´ˆê¸°í™” ì „\n\n");
 
 		for (int i = 0; i < size; i++)
 		{
@@ -126,19 +126,19 @@ void dynamic_allocation()
 	{
 		int size = 0;
 
-		printf("µ¿ÀûÇÒ´çÇÒ doubleÇü º¯¼öÀÇ °³¼ö ÀÔ·Â : ");
+		printf("ë™ì í• ë‹¹í•  doubleí˜• ë³€ìˆ˜ì˜ ê°œìˆ˜ ìž…ë ¥ : ");
 		scanf_s("%d", &size);
 
 		double* ptr = (double*)calloc(size, sizeof(double));
 
-		printf("\nptrÀÌ ÇÒ´ç¹ÞÀº ÁÖ¼Ò : 0x%p\n", ptr);
+		printf("\nptrì´ í• ë‹¹ë°›ì€ ì£¼ì†Œ : 0x%p\n", ptr);
 		for (int i = 0; i < size; i++)
 		{
 			ptr[i] = i;
 			printf("ptr[%d] : %lf\n", i, ptr[i]);
 		}
 
-		printf("\nÀçÇÒ´çÇÒ doubleÇü º¯¼öÀÇ °³¼ö ÀÔ·Â : ");
+		printf("\nìž¬í• ë‹¹í•  doubleí˜• ë³€ìˆ˜ì˜ ê°œìˆ˜ ìž…ë ¥ : ");
 		scanf_s("%d", &size);
 
 		int* test = NULL;
@@ -147,7 +147,7 @@ void dynamic_allocation()
 
 		ptr = (double*)_recalloc((void*)ptr, size, sizeof(double));
 
-		printf("\nptrÀÌ ÀçÇÒ´ç¹ÞÀº ÁÖ¼Ò : 0x%p\n", ptr);
+		printf("\nptrì´ ìž¬í• ë‹¹ë°›ì€ ì£¼ì†Œ : 0x%p\n", ptr);
 		for (int i = 0; i < size; i++)
 		{
 			printf("ptr[%d] : %lf\n", i, ptr[i]);
@@ -165,10 +165,10 @@ void dynamic_allocation()
 		if (ptr != NULL)
 		{
 			for (int i = 0; i < n; i++)
-				printf("%lf, ", ptr[i]); // ¹è¿­Ã³·³ »ç¿ë°¡´É
+				printf("%lf, ", ptr[i]); // ë°°ì—´ì²˜ëŸ¼ ì‚¬ìš©ê°€ëŠ¥
 
 			for (int i = 0; i < n; i++)
-				*(ptr + i) = (double)i; // Å©±â°¡ ÀâÇôÀÖ¾î »ê¼ú¿¬»ê °¡´É
+				*(ptr + i) = (double)i; // í¬ê¸°ê°€ ìž¡í˜€ìžˆì–´ ì‚°ìˆ ì—°ì‚° ê°€ëŠ¥
 
 			for (int i = 0; i < n; i++)
 				printf("%lf, ", ptr[i]);
@@ -181,19 +181,19 @@ void dynamic_allocation()
 
 	{
 		/*
-			¸Þ¸ð¸® ´ÜÆíÈ­
-			 = RAMÀÇ ¸Þ¸ð¸® °ø°£ÀÌ ÀÛÀº Á¶°¢À¸·Î ³ª´µ¾îÁ® ³²Àº ÃÑ ¸Þ¸ð¸®ÀÇ °ø°£Àº ÃæºÐÇÏÁö¸¸ ÇÒ´çÀÌ ºÒ°¡´ÉÇØÁø »óÅ×
+			ë©”ëª¨ë¦¬ ë‹¨íŽ¸í™”
+			 = RAMì˜ ë©”ëª¨ë¦¬ ê³µê°„ì´ ìž‘ì€ ì¡°ê°ìœ¼ë¡œ ë‚˜ë‰˜ì–´ì ¸ ë‚¨ì€ ì´ ë©”ëª¨ë¦¬ì˜ ê³µê°„ì€ ì¶©ë¶„í•˜ì§€ë§Œ í• ë‹¹ì´ ë¶ˆê°€ëŠ¥í•´ì§„ ìƒí…Œ
 
-			 ´ÜÆíÈ­ÀÇ Á¾·ù
-			  - ³»ºÎ ´ÜÆíÈ­ : ¸Þ¸ð¸®¸¦ ÇÒ´çÇÒ¶§ ¸Þ¸ð¸®°¡ ÇÊ¿äÇÑ ¾çº¸´Ù ´õ Å©°Ô ÇÒ´çµÇ¾î ¸Þ¸ð¸® °ø°£ÀÌ ³¶ºñµÇ´Â Çö»ó
-			  - ¿ÜºÎ ´ÜÆíÈ­ : ¸Þ¸ð¸® ÇÒ´ç°ú ÇØÁ¦°¡ ¹Ýº¹µÉ¶§ ÇÒ´çµÈ ¸Þ¸ð¸® »çÀÌ¸¶´Ù ÇÒ´çÇÏÁö ¸øÇÑ ÀÛÀº ¸Þ¸ð¸® °ø°£ÀÌ »ý±â´Â Çö»ó
+			 ë‹¨íŽ¸í™”ì˜ ì¢…ë¥˜
+			  - ë‚´ë¶€ ë‹¨íŽ¸í™” : ë©”ëª¨ë¦¬ë¥¼ í• ë‹¹í• ë•Œ ë©”ëª¨ë¦¬ê°€ í•„ìš”í•œ ì–‘ë³´ë‹¤ ë” í¬ê²Œ í• ë‹¹ë˜ì–´ ë©”ëª¨ë¦¬ ê³µê°„ì´ ë‚­ë¹„ë˜ëŠ” í˜„ìƒ
+			  - ì™¸ë¶€ ë‹¨íŽ¸í™” : ë©”ëª¨ë¦¬ í• ë‹¹ê³¼ í•´ì œê°€ ë°˜ë³µë ë•Œ í• ë‹¹ëœ ë©”ëª¨ë¦¬ ì‚¬ì´ë§ˆë‹¤ í• ë‹¹í•˜ì§€ ëª»í•œ ìž‘ì€ ë©”ëª¨ë¦¬ ê³µê°„ì´ ìƒê¸°ëŠ” í˜„ìƒ
 		*/
 	}
 }
 
 void using_dynamic_storage_allocation_like_an_array()
 {
-	// º¯¼ö ÇÏ³ª
+	// ë³€ìˆ˜ í•˜ë‚˜
 	{
 		int* ptr = NULL;
 
@@ -207,7 +207,7 @@ void using_dynamic_storage_allocation_like_an_array()
 		ptr = NULL;
 	}
 
-	// 1Â÷¿ø ¹è¿­
+	// 1ì°¨ì› ë°°ì—´
 	{
 		int n = 3;
 		int* ptr = (int*)malloc(sizeof(int) * n);
@@ -221,14 +221,14 @@ void using_dynamic_storage_allocation_like_an_array()
 		ptr = NULL;
 	}
 
-	// 2Â÷¿ø ¹è¿­
+	// 2ì°¨ì› ë°°ì—´
 	{
 		int row = 3, col = 2;
 
-		// vla ±â´É Áö¿ø x
+		// vla ê¸°ëŠ¥ ì§€ì› x
 		// int(*ptr2d)[col] = (int(*)[col])malloc(sizeof(int) * row * col);
 
-		// °íÁ¤°ªÀ» ³Ö¾îÁÖ°ÔµÇ¸é µ¿ÀûÇÒ´çÀ» ¾²´Â ÀÇ¹Ì°¡ Åð»öµÈ´Ù.
+		// ê³ ì •ê°’ì„ ë„£ì–´ì£¼ê²Œë˜ë©´ ë™ì í• ë‹¹ì„ ì“°ëŠ” ì˜ë¯¸ê°€ í‡´ìƒ‰ëœë‹¤.
 		int(*ptr2d)[2] = (int(*)[2])malloc(sizeof(int) * row * col);
 
 		if (!ptr2d) exit(1);
@@ -252,7 +252,7 @@ void using_dynamic_storage_allocation_like_an_array()
 	{
 		/*
 		  **************************************************
-		  1Â÷¿ø ¹è¿­À» 2Â÷¿ø ¹è¿­Ã³·³ »ç¿ëÇÏ±â
+		  1ì°¨ì› ë°°ì—´ì„ 2ì°¨ì› ë°°ì—´ì²˜ëŸ¼ ì‚¬ìš©í•˜ê¸°
 
 		  row = 3, col = 2;
 
@@ -269,7 +269,7 @@ void using_dynamic_storage_allocation_like_an_array()
 		  (0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1)
 			0       1       2       3        4       5
 
-		  find index ===> c(¸ñÇ¥ ¿­) + col(ÇÑÁÙÀÇ Å©±â) * r(¸ñÇ¥ Çà)
+		  find index ===> c(ëª©í‘œ ì—´) + col(í•œì¤„ì˜ í¬ê¸°) * r(ëª©í‘œ í–‰)
 		  **************************************************
 	   */
 
@@ -297,14 +297,14 @@ void using_dynamic_storage_allocation_like_an_array()
 char* scan_name()
 {
 	/*
-		»ç¿ëÀÚ·ÎºÎÅÍ ÀûÀýÇÑ Å©±âÀÇ °ø°£¿¡ ¹®ÀÚ¿­À» ÀÔ·ÂÀ»¹Þ¾Æ 
-		ÇØ´ç ¹®ÀÚ¿­ Å©±â¸¸Å­ÀÇ °ø°£À» ¸¸µé¾î ³»¿ëÀ» º¹»çÇÏ°í 
-		±× °ø°£ÀÇ Æ÷ÀÎÅÍ¸¦ ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö scan_name
+		ì‚¬ìš©ìžë¡œë¶€í„° ì ì ˆí•œ í¬ê¸°ì˜ ê³µê°„ì— ë¬¸ìžì—´ì„ ìž…ë ¥ì„ë°›ì•„ 
+		í•´ë‹¹ ë¬¸ìžì—´ í¬ê¸°ë§Œí¼ì˜ ê³µê°„ì„ ë§Œë“¤ì–´ ë‚´ìš©ì„ ë³µì‚¬í•˜ê³  
+		ê·¸ ê³µê°„ì˜ í¬ì¸í„°ë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ scan_name
 	*/
 
 	char buffer[100] = { 0 };
 
-	printf("ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä : ");
+	printf("ì´ë¦„ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš” : ");
 	scanf_s("%s", buffer, sizeof(buffer));
 
 	int size = strlen(buffer) + sizeof((char)('\0'));
@@ -318,5 +318,5 @@ char* scan_name()
 		strcpy_s(name, size, buffer);
 
 
-	return buffer;
+	return buffer; 
 }
