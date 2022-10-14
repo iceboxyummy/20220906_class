@@ -1,8 +1,8 @@
 #include"test1.h"
 #include <stdio.h>
 
-int z = 20; // ¿ÜºÎÆÄÀÏ¿¡¼­ Á¢±Ù°¡´ÉÇÑ Àü¿ªº¯¼ö
-static int w = 10; // static Å°¿öµå¸¦ ºÙÀÌ¸é ¿ÜºÎ¿¡¼­ Á¢±Ù ºÒ°¡´ÉÇÏ´Ù.
+int z = 20; // ì™¸ë¶€íŒŒì¼ì—ì„œ ì ‘ê·¼ê°€ëŠ¥í•œ ì „ì—­ë³€ìˆ˜
+static int w = 10; // static í‚¤ì›Œë“œë¥¼ ë¶™ì´ë©´ ì™¸ë¶€ì—ì„œ ì ‘ê·¼ ë¶ˆê°€ëŠ¥í•˜ë‹¤.
 
 void print_hello()
 {
@@ -12,4 +12,4 @@ void print_hello()
 void test()
 {
 	printf("Test\n");
-}
+} 
