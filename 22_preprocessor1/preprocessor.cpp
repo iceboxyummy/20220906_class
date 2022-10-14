@@ -1,79 +1,79 @@
 /*
-	ÀüÃ³¸®±â : #À¸·Î ½ÃÀÛÇÏ´Â ÄÄÆÄÀÏ ÀÌÀü¿¡ ¿ìÀü Ã³¸®µÇ´Â ±¸¹®
+	ì „ì²˜ë¦¬ê¸° : #ìœ¼ë¡œ ì‹œìž‘í•˜ëŠ” ì»´íŒŒì¼ ì´ì „ì— ìš°ì „ ì²˜ë¦¬ë˜ëŠ” êµ¬ë¬¸
 
-	include : ÇØ´ç ÆÄÀÏÀÇ ³»¿ëÀ» Ä¡È¯ÇØÁØ´Ù.
+	include : í•´ë‹¹ íŒŒì¼ì˜ ë‚´ìš©ì„ ì¹˜í™˜í•´ì¤€ë‹¤.
 
-	< > : ÄÄÆÄÀÏ·¯°¡ ±âº»ÀûÀ¸·Î ÁöÁ¤ÇÏ°í ÀÖ´Â Ç¥ÁØ ¶óÀÌºê·¯¸® °æ·Î¿¡ ÀÖ´Â Çì´õ ÆÄÀÏ ÂüÁ¶
-	" " : »ç¿ëÀÚ°¡ »ç¿ëÁßÀÎ ¼Ò½º¿¡ ÀÖ´Â À§Ä¡¸¦ ±âÁØÀ¸·Î Çì´õ ÆÄÀÏÀ» Ã£°í, ¸¸¾à¿¡ ¾øÀ¸¸é < >¿Í °°ÀÌ µ¿ÀÛÇÑ´Ù.
+	< > : ì»´íŒŒì¼ëŸ¬ê°€ ê¸°ë³¸ì ìœ¼ë¡œ ì§€ì •í•˜ê³  ìžˆëŠ” í‘œì¤€ ë¼ì´ë¸ŒëŸ¬ë¦¬ ê²½ë¡œì— ìžˆëŠ” í—¤ë” íŒŒì¼ ì°¸ì¡°
+	" " : ì‚¬ìš©ìžê°€ ì‚¬ìš©ì¤‘ì¸ ì†ŒìŠ¤ì— ìžˆëŠ” ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ í—¤ë” íŒŒì¼ì„ ì°¾ê³ , ë§Œì•½ì— ì—†ìœ¼ë©´ < >ì™€ ê°™ì´ ë™ìž‘í•œë‹¤.
 
-	  / : ÇöÀç µð·ºÅÍ¸®ÀÇ ·çÆ®(ÃÖ»ó´ÜÆÄÀÏ)ÀÌµ¿
-	 ./ : ÇöÀçÀ§Ä¡
-	../ : »óÀ§ µð·ºÅÍ¸®·Î ÀÌµ¿
+	  / : í˜„ìž¬ ë””ë ‰í„°ë¦¬ì˜ ë£¨íŠ¸(ìµœìƒë‹¨íŒŒì¼)ì´ë™
+	 ./ : í˜„ìž¬ìœ„ì¹˜
+	../ : ìƒìœ„ ë””ë ‰í„°ë¦¬ë¡œ ì´ë™
 */
 
-#include<stdio.h> // ¿©±â¿¡ stdio.hÀÇ ³»¿ëÀ» Ä¡È¯ÇØÁØ´Ù.
-#include"stdio.h" // ¸ÕÀú ÇöÀçÀ§Ä¡¿¡¼­ ÆÄÀÏÀ» Ã£°í ¾ø´Ù¸é < >¿Í °°ÀÌ µ¿ÀÛÇÑ´Ù.
+#include<stdio.h> // ì—¬ê¸°ì— stdio.hì˜ ë‚´ìš©ì„ ì¹˜í™˜í•´ì¤€ë‹¤.
+#include"stdio.h" // ë¨¼ì € í˜„ìž¬ìœ„ì¹˜ì—ì„œ íŒŒì¼ì„ ì°¾ê³  ì—†ë‹¤ë©´ < >ì™€ ê°™ì´ ë™ìž‘í•œë‹¤.
 
-// µÑ ´Ù °°Àº ÀÇ¹Ì ÇöÀç µð·ºÅÍ¸® À§Ä¡¿¡¼­ Çì´õ¸¦ Ã£´Â´Ù.
-#include"test1.h" // »ó´ë°æ·Î
+// ë‘˜ ë‹¤ ê°™ì€ ì˜ë¯¸ í˜„ìž¬ ë””ë ‰í„°ë¦¬ ìœ„ì¹˜ì—ì„œ í—¤ë”ë¥¼ ì°¾ëŠ”ë‹¤.
+#include"test1.h" // ìƒëŒ€ê²½ë¡œ
 #include"./test1.h" 
-#include"C:\Users\SGA_C_014\Desktop\yoo\22_preprocessor1\test1.h" // Àý´ë°æ·Î
-// »óÀ§ µð·ºÅÍ¸®·Î ÀÌµ¿ÇÏ¿© ´Ù¸¥ Æú´õ¿¡ Á¢±Ù
+#include"C:\Users\SGA_C_014\Desktop\yoo\22_preprocessor1\test1.h" // ì ˆëŒ€ê²½ë¡œ
+// ìƒìœ„ ë””ë ‰í„°ë¦¬ë¡œ ì´ë™í•˜ì—¬ ë‹¤ë¥¸ í´ë”ì— ì ‘ê·¼
 #include"../22_preprocessor2/test2.h"
 
-// ¸ÞÅ©·Î »ó¼ö : ¸ÅÅ©·Î »ó¼ö¸¦ ÀÌ¸§À¸·Î ´Ù·ê ¼ö ÀÖ´Ù.
+// ë©”í¬ë¡œ ìƒìˆ˜ : ë§¤í¬ë¡œ ìƒìˆ˜ë¥¼ ì´ë¦„ìœ¼ë¡œ ë‹¤ë£° ìˆ˜ ìžˆë‹¤.
 #define NUM 10
 
 /*
-	¸ÅÅ©·Î ÇÔ¼ö
-	 - ´Ü¼ø Ä¡È¯ÀÌ±â¿¡ ÀÎÀÚÀÇ ÀÚ·áÇüÀ» ½Å°æ¾²Áö ¾Ê´Â´Ù.
-	 = ÇÔ¼ö È£Ãâ¿¡ ÀÇÇÑ ¼º´É ÀúÇÏ°¡ ÀÏ¾î³ªÁö ¾Ê¾Æ ½ÇÇà¼Óµµ°¡ Çâ»ó
-	 = ´Ü¼ø Ä¡È¯ÀÌ¹Ç·Î µð¹ö±ëÀÌ µÇÁö ¾Ê´Â´Ù.
-	 - ¸ÅÅ©·Î ÇÔ¼öÀÇ ÄÚµå°¡ ±æ¾îÁú¼ö·Ï °ýÈ£°¡ ¸¹¾ÆÁ®¼­ °¡Á·¼ºÀÌ ¶³¾îÁø´Ù.
-	  ->°£´ÜÇÏ°í ÀÚÁÖ ÃâµÇ´Â ÇÔ¼ö¿¡ »ç¿ëÇÏ´Â°Ô À¯¸®
+	ë§¤í¬ë¡œ í•¨ìˆ˜
+	 - ë‹¨ìˆœ ì¹˜í™˜ì´ê¸°ì— ì¸ìžì˜ ìžë£Œí˜•ì„ ì‹ ê²½ì“°ì§€ ì•ŠëŠ”ë‹¤.
+	 = í•¨ìˆ˜ í˜¸ì¶œì— ì˜í•œ ì„±ëŠ¥ ì €í•˜ê°€ ì¼ì–´ë‚˜ì§€ ì•Šì•„ ì‹¤í–‰ì†ë„ê°€ í–¥ìƒ
+	 = ë‹¨ìˆœ ì¹˜í™˜ì´ë¯€ë¡œ ë””ë²„ê¹…ì´ ë˜ì§€ ì•ŠëŠ”ë‹¤.
+	 - ë§¤í¬ë¡œ í•¨ìˆ˜ì˜ ì½”ë“œê°€ ê¸¸ì–´ì§ˆìˆ˜ë¡ ê´„í˜¸ê°€ ë§Žì•„ì ¸ì„œ ê°€ì¡±ì„±ì´ ë–¨ì–´ì§„ë‹¤.
+	  ->ê°„ë‹¨í•˜ê³  ìžì£¼ ì¶œë˜ëŠ” í•¨ìˆ˜ì— ì‚¬ìš©í•˜ëŠ”ê²Œ ìœ ë¦¬
 */
 
-// °ö¼ÀÇÔ¼ö
+// ê³±ì…ˆí•¨ìˆ˜
 #define MUL1(x,y) (x*y) 
 #define MUL2(x,y) ((x)*(y)) 
 
- // # : ÀÎÀÚ¸¦ ¹®ÀÚ¿­·Î ¹Ù²Ù¾î ÁØ´Ù.
- // ¿¬¼ÓµÈ ¹®ÀÚ¿­Àº ÇÏ³ª·Î ÇÕÃÄÁø´Ù. °á°ú => printf("x : %d\n",x)
+ // # : ì¸ìžë¥¼ ë¬¸ìžì—´ë¡œ ë°”ê¾¸ì–´ ì¤€ë‹¤.
+ // ì—°ì†ëœ ë¬¸ìžì—´ì€ í•˜ë‚˜ë¡œ í•©ì³ì§„ë‹¤. ê²°ê³¼ => printf("x : %d\n",x)
 #define PRINT(x) printf(#x" : %d\n",x)
 
- // ## : ÇÏ³ª·Î ÇÕÃÄÁØ´Ù.
+ // ## : í•˜ë‚˜ë¡œ í•©ì³ì¤€ë‹¤.
 #define STRUCTURE(x) typedef struct {int i;} STRUCTURE_##x
 
 #define Test
 #define CANCEL
 
-#if defined CANCEL && defined Test // defined : ÇØ´ç ¸ÅÅ©·Î°¡ Á¤ÀÇ µÇ¾îÀÖ´Â°¡?
-#undef Test // ¸ÅÅ©·Î Á¤ÀÇ¸¦ ÇØÁ¦ÇÏ´Â ±¸¹®
+#if defined CANCEL && defined Test // defined : í•´ë‹¹ ë§¤í¬ë¡œê°€ ì •ì˜ ë˜ì–´ìžˆëŠ”ê°€?
+#undef Test // ë§¤í¬ë¡œ ì •ì˜ë¥¼ í•´ì œí•˜ëŠ” êµ¬ë¬¸
 #endif
 
-#ifdef Test // ÇØ´ç ¸ÅÅ©·Î°¡ Á¤ÀÇµÇ¾î ÀÖ´Ù¸é ¾Æ·¡ ÄÚµå¸¦ Æ÷ÇÔÇÑ´Ù.
+#ifdef Test // í•´ë‹¹ ë§¤í¬ë¡œê°€ ì •ì˜ë˜ì–´ ìžˆë‹¤ë©´ ì•„ëž˜ ì½”ë“œë¥¼ í¬í•¨í•œë‹¤.
 int i = 10;
-#else	// ±× ¿ÜÀÇ °æ¿ì ¿¹¿Ü Ã³¸®
+#else	// ê·¸ ì™¸ì˜ ê²½ìš° ì˜ˆì™¸ ì²˜ë¦¬
 int i = 20;
 #endif
 
-#ifndef Test // ÇØ´ç ¸ÅÅ©·Î°¡ Á¤ÀÇµÇ¾î ÀÖÁö¾Ê´Ù¸é ¾Æ·¡ ÄÚµå¸¦ Æ÷ÇÔÇÑ´Ù.
+#ifndef Test // í•´ë‹¹ ë§¤í¬ë¡œê°€ ì •ì˜ë˜ì–´ ìžˆì§€ì•Šë‹¤ë©´ ì•„ëž˜ ì½”ë“œë¥¼ í¬í•¨í•œë‹¤.
 int j = 10;
-#else	// ±× ¿ÜÀÇ °æ¿ì ¿¹¿Ü Ã³¸®
+#else	// ê·¸ ì™¸ì˜ ê²½ìš° ì˜ˆì™¸ ì²˜ë¦¬
 int j = 20;
 #endif
 
-// ¿ÜºÎ ÆÄÀÏ¿¡ Á¸ÀçÇÏ´Â Àü¿ªº¯¼ö¸¦ °¡Á®¿Ã‹š extern Å°¿öµå »ç¿ë
-extern int z; // ¿ÜºÎ¿¡ Á¸ÀçÇÏ´Â z¶ó´Â º¯¼ö¸¦ °¡Á®´Ù ¾²°Ú´Ù.
-//extern int z = 10; // ÇØ´ç À§Ä¡¿¡ z¶ó´Â º¯¼ö¸¦ ¸¸µé°Ú´Ù.
- // ÃÊ±âÈ­ ½ÃÄÑÁÖ¸é ÇØ´ç º¯¼ö¸¦ ½ÇÁ¦·Î ¸¸µå´Â ¸í·É¾î°¡ µÈ´Ù.
- //  -> Àü¿ªº¯¼ö¸¦ ÃÊ±âÈ­ ÇÒ ‹š´Â ÇÑ °÷¿¡¼­¸¸ ÃÊ±âÈ­¸¦ ÇØ¾ßÇÑ´Ù.
+// ì™¸ë¶€ íŒŒì¼ì— ì¡´ìž¬í•˜ëŠ” ì „ì—­ë³€ìˆ˜ë¥¼ ê°€ì ¸ì˜¬Â‹Âš extern í‚¤ì›Œë“œ ì‚¬ìš©
+extern int z; // ì™¸ë¶€ì— ì¡´ìž¬í•˜ëŠ” zë¼ëŠ” ë³€ìˆ˜ë¥¼ ê°€ì ¸ë‹¤ ì“°ê² ë‹¤.
+//extern int z = 10; // í•´ë‹¹ ìœ„ì¹˜ì— zë¼ëŠ” ë³€ìˆ˜ë¥¼ ë§Œë“¤ê² ë‹¤.
+ // ì´ˆê¸°í™” ì‹œì¼œì£¼ë©´ í•´ë‹¹ ë³€ìˆ˜ë¥¼ ì‹¤ì œë¡œ ë§Œë“œëŠ” ëª…ë ¹ì–´ê°€ ëœë‹¤.
+ //  -> ì „ì—­ë³€ìˆ˜ë¥¼ ì´ˆê¸°í™” í•  Â‹ÂšëŠ” í•œ ê³³ì—ì„œë§Œ ì´ˆê¸°í™”ë¥¼ í•´ì•¼í•œë‹¤.
 
 extern int w = 20;
 
-// ¿ÜºÎÆÄÀÏÀÇ ÇÔ¼ö¸¦ Ãß°¡ÇÒ¶§´Â ÇÁ·ÎÅäÅ¸ÀÔÀ» Àû¾îÁØ´Ù.
+// ì™¸ë¶€íŒŒì¼ì˜ í•¨ìˆ˜ë¥¼ ì¶”ê°€í• ë•ŒëŠ” í”„ë¡œí† íƒ€ìž…ì„ ì ì–´ì¤€ë‹¤.
 // extern void test(); 
-void test(); // <- extern Å°¿öµå »ý·«°¡´É 
+void test(); // <- extern í‚¤ì›Œë“œ ìƒëžµê°€ëŠ¥ 
 
 int main() {
 
@@ -105,4 +105,4 @@ int main() {
 	printf("w : %d\n", w);
 
 	return 0;
-}
+} 
