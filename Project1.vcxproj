@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="25_bit flag.cpp" />
+    <ClCompile Include="26_student\main.c" />
+    <ClCompile Include="26_student\student\student.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="26_student\student\student.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
