@@ -99,7 +99,7 @@ void pointer_and_arr()
 
 	/*
 		arr[0]==*(arr+0)
-		arr[0]==*(arr+0)
+		arr[0]==*(arr+1)
 
 		포인터는 +, - 연산으로 자료형으 크기만큼 주소를 이동한다.
 		자료형이 void인 경우는 불가능
@@ -132,8 +132,8 @@ void pointer_and_const()
 
 
 	// 1
-	const double PT1 = 3.14;
-	double const PT2 = 3.14;
+	const double PI1 = 3.14;
+	double const PI2 = 3.14;
 
 	//PT1 = 1.24; <- 상수를 변경시키려 할는 에러 발생
 
